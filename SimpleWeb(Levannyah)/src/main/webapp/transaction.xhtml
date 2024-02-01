@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <title>Simple App | Vote</title>
+    <ui:include src="/inc/header.xhtml"/>
+    <style>
+      #qrCodeContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    </style>
+  </h:head>
+
+  <h:body styleClass="cyan lighten-5">
+    <section class="section transaction-section center-align">
+      <div class="container">
+        <h:form>
+          <p:dialog id="transactionDialog" header="Almost done!" widgetVar="transactionDialog" global="true" showEffect="fade" hideEffect="fade" responsive="true" closable="false" visible="true" width="400">
+            <p:graphicImage value="webapp/resources/img/qr-code.png" style="max-width: 100px; max-height: 100px;"/><br />
+
+            <div class="input-field">
+              <h:outputText value="Please scan the QR Code to submit your vote." />
+            </div>
+
+            <div class="input-field" style="margin-top: 2em;">
+              <div id="qrCodeContainer">
+                <div id="qrCode"></div>
+              </div>
+              <input type="hidden" id="qrCodeString" value="#{transactionRequest.qrCode}"/>
+            </div>
+
+            <div class="input-field" style="margin-top: 2em;">
+              <p:commandButton type="button" value="Cancel" onclick="redirectToIndex()" styleClass="ui-button-danger" style="width: 40%;"/>
+            </div>
+          </p:dialog>
+          <p:poll widgetVar="pollWidget" interval="5" listener="#{transactionAuthorize.authorizeTransaction()}"/>
+        </h:form>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+         document.addEventListener('DOMContentLoaded', function() {
+           showQrCode();
+         });
+
+         function showQrCode() {
+            var qrCodeString = document.getElementById("qrCodeString").value;
+
+            var qrCode = new QRCode(document.getElementById("qrCode"), {
+                text: qrCodeString,
+                width: 200,
+                height: 200,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+          }
+
+         function redirectToIndex() {
+            window.location.href = 'index.xhtml';
+         }
+      </script>
+
+    <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; position: fixed; bottom: 1rem; left: 0; right: 0;">
+      <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+    </div>
+
+    <ui:include src="/inc/footer.xhtml"/>
+  </h:body>
+</html>

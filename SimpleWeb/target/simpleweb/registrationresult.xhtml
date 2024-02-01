@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    
+    <h:head>
+        <title>Registration Result</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <h:outputScript library="js" name="qrcode.js"/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </h:head>
+
+    <!--style="background-color: #E3F2FD;"-->
+    <h:body class="bg-image">
+        
+        <div class="container-fluid">
+            <h:inputHidden id="method" value="#{registrationresult.getMethod()}"/>
+            <div id="firstpage" style="display: none;"> 
+                <div>
+                    <div class="row mx-auto my-2 px-4 py-2">
+                        <div class="animate__animated animate__fadeIn">
+                            <p class="text-center" style="font-size: 40px; font-weight: bold;">Hey <h:outputText value="#{registrationresult.getUsername()}," style="font-family: 'Roboto', sans-serif; font-size: 40px;"/><br/>we are almost done!</p>
+                        </div>
+                        <div class="animate__animated animate__fadeInUp">
+                            <p class="text-center" style="font-size: 23px; font-weight: 500;">Before you login, we need some configuration for using other authentication method.</p>
+                            <p class="text-center" style="font-size: 23px; font-weight: 500;">Scan the below QR Code to download the <b>Centagate Cloud App</b>:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow mx-auto my-3 px-4 py-4" style="border: 0; border-radius: 15px; width: 70%; background-color: #3DDC84;">
+                    <div class="row align-items-center">
+                        <div class="col text-center">
+                            <img src="resources/images/android.png" style="width: 100px; height: 100px;"/>
+                        </div>
+                        <div class="col mt-3">
+                            <div id="qrcodecentagateappAndroid" class="h-100 d-flex align-items-end justify-content-center"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow mx-auto my-3 px-4 py-4" style="border: 0; border-radius: 15px; width: 70%; background-color: #8E8E93;">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div id="qrcodecentagateappIOS" class="h-100 d-flex align-items-center justify-content-center"></div>
+                        </div>
+                        <div class="col text-center mt-3">
+                            <img src="resources/images/ios.png" style="width: 115px; height: 115px;"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col text-center my-3">
+                        <b style="font-family: 'Roboto', sans-serif; font-size: 20px;">I have downloaded the app, take me to next instruction:&emsp;</b>
+                        <p:commandButton id="toggleButton" icon="pi pi-chevron-right" styleClass="rounded-button" style="width: 50px; height: 50px; font-weight: bold; background-color: #013763;"/>
+                    </div>
+                </div>
+
+            </div>
+       
+            <div class="row flex-xl-nowrap" id="nextpage" style="display: none;">
+                <div class="d-none d-xl-block col-xl-2 col text-center shadow">
+                    <ul class="section nav shadow">
+                        <li id="sidenav" style="color: #0D47A1 !important;"><a href="#permission">Centagate Application Permission Configuration</a></li>
+                        <li id="sidenav" style="color: #0D47A1 !important;"><a href="#provisioning">QR Code Provisioning Setup</a></li>
+                        <li id="sidenav" style="color: #0D47A1 !important;"><a href="#authentication">Centagate Console Authentication Setup</a></li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <main class="mx-auto col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+                        <h:inputHidden id="qrcode" value="#{registrationresult.getProvisioningQR()}"/>
+                        <h1 class="bd-title mx-3 my-3 text-center" id="content" style="font-family: 'Roboto', sans-serif; font-weight: bold;">Centagate Application Guideline</h1>
+                        <p class="bd-lead text-center" style="font-size: 20px;">
+                            Users are recommended to read through this page in order to enjoy all the authentication method without hassle.
+                        </p>          
+                    
+                        <div class="card shadow mx-3 my-4 px-4 py-4" style="border: 0; border-radius: 20px;">
+                            <h2 id="permission">
+                                Centagate Application Permission Configuration
+                                <a class="anchor-link" href="#permission" aria-label="Anchor"></a>
+                            </h2>
+                            <p class="mt-2" style="font-size: 20px;">Open the Centagate Application after downloaded</p>
+
+                            <ul>
+                                <li class="check"><i class="pi pi-check"></i>  Enabled Push Notification Service</li>
+                                <li class="check"><i class="pi pi-check"></i>  Enabled Location Service</li>
+                                <li class="check"><i class="pi pi-check"></i>  Set up Secure PIN</li>
+                                <li class="check"><i class="pi pi-check"></i>  Allow Make and Manage Phone Calls</li>
+                                <li class="check"><i class="pi pi-check"></i>  Allow Access Photos and Media on your device</li>
+                            </ul>
+                        </div>
+
+                        <div class="card shadow mx-3 my-4 px-4 py-4" style="border: 0; border-radius: 20px;">
+                            <h2 id="provisioning">
+                                QR Code Provisioning Setup
+                                <a class="anchor-link" href="#provisioning" aria-label="Anchor"></a>
+                            </h2>
+                        
+                            <ul class="mt-3">
+                                <li><p>Click on the <img src="resources/images/settings.png"/> button and Choose <b>Change Server</b></p></li>
+                                <li><p>Change all the URLs that include <b>console.centagatecloud.com</b> to <b>cloud.centagate.com</b></p></li>
+                                <li><p>Click on <b>Proceed</b> to save changes</p></li>
+                                <li><p>Go back to the homepage. Click on the <img src="resources/images/add.png"/> button and select <strong>QR Code Provisioning</strong></p></li>
+                                <li><p>Allowed Centagate Cloud to take pictures and record video</p></li>
+                                <li><p>Scan the QR Code below:</p></li>
+
+                                <div id="qrcodeprovisioning" class="h-100 d-flex align-items-center justify-content-center"></div>
+                                <li class="mt-5"><p>Enter the following provisioning code into the Application: </p></li>
+                                <h:outputText style="display: block; text-align: center; font-size: 35px; font-weight: bold;" value="#{registrationresult.getProvisioningCode()}" escape="false"></h:outputText>
+                                <li class="mt-3">If <b>provisioning fail</b>, you can request assist from our admin</li>
+                            </ul>
+                        </div>
+                    
+
+                        <div class="card shadow mx-3 my-4 px-4 py-4" style="border: 0; border-radius: 20px;">
+                            <h2 id="authentication">
+                                Centagate Console Authentication Setup
+                                <a class="anchor-link" href="#authentication" aria-label="Anchor"></a>
+                            </h2>
+                        
+                            <p class="mt-2" style="font-size: 20px;">Click on <a href="https://cloud.centagate.com/centagate/login.xhtml" target="_blank" rel="noopener noreferrer">here</a> to visit the Centagate Console</p>
+
+                            <ul class="">
+                                <li><p>Login with your username and password</p></li>
+                                <li><p>Login with any method (OTP, SMS OTP, CROTP, QRCode, Push Notification etc)</p></li>
+                                <li><p>In Authentication Methods, click to enable Passwordless Authentication:</p></li>
+                                <li style="list-style: none; text-align: center; justify-content: center; align-items: center;"><img src="resources/images/enableAuthentication.png" style="width: 100%;"/></li>
+                                <li class="pt-3"><p>All done! You can close the Centagate Console and back to login page</p></li>
+                            </ul>
+                        </div>
+
+                        <div class="text-center mx-2 my-2">
+                            <h:form>
+                                <h:commandButton class="btn btn-primary rounded-pill px-3 py-2" value="Back to Login Page" action="#{registrationresult.redirectLogin()}"/>
+                            </h:form>
+                        </div>
+
+                    </main>
+                </div>
+
+            </div>
+        </div>
+    
+
+        <h:outputScript>
+            const firstpage = document.getElementById('firstpage');
+            const secondpage = document.getElementById('nextpage');
+            const toggleButton = document.getElementById('toggleButton');
+
+            var method = document.getElementById('method').value;
+            console.log(method);
+            if(method == "nobindnoauth" || method == "register") {
+                firstpage.style.display = 'block';
+            }else if(method == "bindnoauth"){
+                secondpage.style.display = 'block';
+                window.location.href = 'http://localhost:8080/simpleweb/faces/registrationresult.xhtml?faces-redirect=true#authentication';
+            }
+            
+            toggleButton.addEventListener('click', function() {
+                firstpage.style.display = 'none';
+                secondpage.style.display = 'block';
+            });
+
+            var qrcode = new QRCode(document.getElementById("qrcodecentagateappAndroid"), {
+                text: "https://play.google.com/store/apps/details?id=com.securemetric.centagatecloud&amp;hl=en&amp;gl=US&amp;pli=1",
+                width: 256,
+                height: 256,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            var qrcodeAppstore = new QRCode(document.getElementById("qrcodecentagateappIOS"), {
+                text: "https://apps.apple.com/my/app/centagate-cloud/id1494073137",
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            })
+
+            var qr = document.getElementById('qrcode').value;
+            var qrcodes = new QRCode(document.getElementById("qrcodeprovisioning"), {
+                text: qr,
+                width: 256,
+                height: 256,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        </h:outputScript>
+
+        <style>
+            .bg-image {
+                background-image: url("resources/images/blurbackground2.jpg");
+                background-position: center;
+                background-size: cover;
+            }
+
+            .check {
+                list-style: none;
+            }
+
+            p, h1, h2, h4, li {
+                font-family: 'Roboto', sans-serif;
+            }
+
+            h1, h2 {
+                color: #1A237E;
+            }
+
+            .animate__animated.animate__fadeInUp {
+                animation-delay: 20ms;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            li#sidenav {
+                padding: 10px;
+            }
+
+            ul.section.nav {
+                position: fixed;
+                top: 200px;
+                width: 200px;
+                display: table;
+                border-radius: 20px;
+                background-color: #B3E5FC;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .section li:hover {
+                border-radius: 20px;
+                 background-color: #F0F8FF;
+            }
+
+            @media (max-width: 1200px) {
+                ul.section.nav {
+                    position: static;
+                }
+            }
+            
+        </style>
+
+    </h:body>
+</html>

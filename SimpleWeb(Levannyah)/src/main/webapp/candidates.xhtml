@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <h:head>
+    <title>Simple App | Candidates</title>
+    <ui:include src="/inc/header.xhtml"/>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
+
+    <!-- jQuery DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <style>
+      .custom-container {
+        padding-left: 100px;
+        padding-right: 100px;
+      }
+    </style>
+  </h:head>
+
+  <h:body styleClass="cyan lighten-5">
+    <ui:include src="/inc/navbar-admin.xhtml"/>
+
+    <section id="candidates" class="section section-candidates" style="text-align: center;">
+      <div class="custom-container">
+        <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Candidates</h4>
+        <h:form>
+          <p:growl id="growl" showDetail="true">
+            <p:autoUpdate/>
+          </p:growl>
+        </h:form>
+        <p:panel style="margin-top: 2rem;">
+          <f:facet name="header">
+            <h:outputText value="Candidate Details" style="font-size: 20px; float: left;"/>
+          </f:facet>
+          <table id="candidatesList" class="highlight responsive-table">
+            <thead style="text-align: center;">
+            <tr>
+              <th style="text-align: center;">No</th>
+              <th style="text-align: center;">Name</th>
+              <th style="text-align: center;">Faculty</th>
+              <th style="text-align: center;">Votes</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <ui:repeat value="#{candidates.candidates}" var="candidate">
+              <tr>
+                <td>#{candidate.id}</td>
+                <td>#{candidate.name}</td>
+                <td>#{candidate.faculty}</td>
+                <td>#{candidate.votes}</td>
+              </tr>
+            </ui:repeat>
+            </tbody>
+          </table>
+        </p:panel>
+      </div>
+    </section>
+
+    <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
+      <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+    </div>
+
+    <ui:include src="/inc/footer.xhtml"/>
+
+    <script>
+      function reset() {
+        document.getElementById("addCandidatesForm").reset();
+      }
+
+      $(document).ready(function () {
+        $('#candidatesList').DataTable({
+          order: [],
+          columnDefs: [{
+            targets: "_all",
+            orderable: true,
+            className: 'center-align'
+          }],
+          "language": {
+            "search": "",
+            "searchPlaceholder": "Search",
+          },
+          "dom": "&lt;'row'&lt;>&lt;'col s12'f>>" +
+                 "&lt;'row'&lt;'col s12'tr>>" +
+                 "&lt;'row'&lt;'col s12 m5'i>&lt;'col s12 m7'p>>",
+        });
+      });
+    </script>
+  </h:body>
+</html>

@@ -1,0 +1,39 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <h:form>
+    <p:toolbar style="align-items: center;">
+      <p:toolbarGroup style="margin-left: 3rem;">
+        <p:menuitem>
+          <p:graphicImage value="webapp/resources/img/navbar.svg" width="180" alt="Simple App" onclick="redirectToIndex()"/>
+        </p:menuitem>
+      </p:toolbarGroup>
+
+      <p:toolbarGroup style="margin-right: 3rem;">
+        <p:menuButton value="#{adaptive.username}" buttonStyleClass="ui-button-outlined black-text">
+          <p:menuitem value="Self Service" onclick="redirectToSelfService()" icon="pi pi-fw pi-cog"/>
+          <p:menuitem value="Logout" action="#{login.logout}" icon="pi pi-fw pi-sign-out"/>
+        </p:menuButton>
+      </p:toolbarGroup>
+    </p:toolbar>
+  </h:form>
+
+  <script type="text/javascript">
+    function redirectToIndex() {
+      window.location.href = 'index.xhtml';
+    }
+
+    function redirectToSelfService() {
+      window.location.href = 'self-service.xhtml';
+    }
+
+    function reset() {
+      document.getElementById("updatePasswordForm").reset();
+    }
+  </script>
+
+</ui:composition>

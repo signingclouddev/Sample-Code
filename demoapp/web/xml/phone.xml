@@ -1,0 +1,1703 @@
+<DATA>
+
+	<ROW>
+		<id>0</id>
+		<name> </name>
+		<iso> </iso>
+		<itu> </itu>
+	</ROW>
+
+	<ROW>
+		<id>1</id>
+		<name>Afghanistan</name>
+		<iso>AF</iso>
+		<itu>+93</itu>
+	</ROW>
+
+	<ROW>
+		<id>10</id>
+		<name>Argentina</name>
+		<iso>AR</iso>
+		<itu>+54</itu>
+	</ROW>
+
+	<ROW>
+		<id>100</id>
+		<name>Indonesia</name>
+		<iso>ID</iso>
+		<itu>+62</itu>
+	</ROW>
+
+	<ROW>
+		<id>101</id>
+		<name>Iran</name>
+		<iso>IR</iso>
+		<itu>+98</itu>
+	</ROW>
+
+	<ROW>
+		<id>102</id>
+		<name>Iraq</name>
+		<iso>IQ</iso>
+		<itu>+964</itu>
+	</ROW>
+
+	<ROW>
+		<id>103</id>
+		<name>Ireland</name>
+		<iso>IE</iso>
+		<itu>+353</itu>
+	</ROW>
+
+	<ROW>
+		<id>104</id>
+		<name>Israel</name>
+		<iso>IL</iso>
+		<itu>+972</itu>
+	</ROW>
+
+	<ROW>
+		<id>105</id>
+		<name>Italy</name>
+		<iso>IT</iso>
+		<itu>+39</itu>
+	</ROW>
+
+	<ROW>
+		<id>106</id>
+		<name>Jamaica</name>
+		<iso>JM</iso>
+		<itu>+1876</itu>
+	</ROW>
+
+	<ROW>
+		<id>107</id>
+		<name>Japan</name>
+		<iso>JP</iso>
+		<itu>+81</itu>
+	</ROW>
+
+	<ROW>
+		<id>108</id>
+		<name>Jordan</name>
+		<iso>JO</iso>
+		<itu>+962</itu>
+	</ROW>
+
+	<ROW>
+		<id>109</id>
+		<name>Kazakhstan</name>
+		<iso>KZ</iso>
+		<itu>+7</itu>
+	</ROW>
+
+	<ROW>
+		<id>11</id>
+		<name>Armenia</name>
+		<iso>AM</iso>
+		<itu>+374</itu>
+	</ROW>
+
+	<ROW>
+		<id>110</id>
+		<name>Kenya</name>
+		<iso>KE</iso>
+		<itu>+254</itu>
+	</ROW>
+
+	<ROW>
+		<id>111</id>
+		<name>Kiribati</name>
+		<iso>KI</iso>
+		<itu>+686</itu>
+	</ROW>
+
+	<ROW>
+		<id>112</id>
+		<name>Korea, North</name>
+		<iso>KP</iso>
+		<itu>+850</itu>
+	</ROW>
+
+	<ROW>
+		<id>113</id>
+		<name>Korea, South</name>
+		<iso>KR</iso>
+		<itu>+82</itu>
+	</ROW>
+
+	<ROW>
+		<id>114</id>
+		<name>Kosovo</name>
+		<iso>CS</iso>
+		<itu>+381</itu>
+	</ROW>
+
+	<ROW>
+		<id>115</id>
+		<name>Kuwait</name>
+		<iso>KW</iso>
+		<itu>+965</itu>
+	</ROW>
+
+	<ROW>
+		<id>116</id>
+		<name>Kyrgyzstan</name>
+		<iso>KG</iso>
+		<itu>+996</itu>
+	</ROW>
+
+	<ROW>
+		<id>117</id>
+		<name>Laos</name>
+		<iso>LA</iso>
+		<itu>+856</itu>
+	</ROW>
+
+	<ROW>
+		<id>118</id>
+		<name>Latvia</name>
+		<iso>LV</iso>
+		<itu>+371</itu>
+	</ROW>
+
+	<ROW>
+		<id>119</id>
+		<name>Lebanon</name>
+		<iso>LB</iso>
+		<itu>+961</itu>
+	</ROW>
+
+	<ROW>
+		<id>12</id>
+		<name>Aruba</name>
+		<iso>AW</iso>
+		<itu>+297</itu>
+	</ROW>
+
+	<ROW>
+		<id>120</id>
+		<name>Lesotho</name>
+		<iso>LS</iso>
+		<itu>+266</itu>
+	</ROW>
+
+	<ROW>
+		<id>121</id>
+		<name>Liberia</name>
+		<iso>LR</iso>
+		<itu>+231</itu>
+	</ROW>
+
+	<ROW>
+		<id>122</id>
+		<name>Libyan Arab Jamahiriya</name>
+		<iso>LY</iso>
+		<itu>+218</itu>
+	</ROW>
+
+	<ROW>
+		<id>123</id>
+		<name>Liechtenstein</name>
+		<iso>LI</iso>
+		<itu>+423</itu>
+	</ROW>
+
+	<ROW>
+		<id>124</id>
+		<name>Lithuania</name>
+		<iso>LT</iso>
+		<itu>+370</itu>
+	</ROW>
+
+	<ROW>
+		<id>125</id>
+		<name>Luxembourg</name>
+		<iso>LU</iso>
+		<itu>+352</itu>
+	</ROW>
+
+	<ROW>
+		<id>126</id>
+		<name>Macau</name>
+		<iso>MO</iso>
+		<itu>+853</itu>
+	</ROW>
+
+	<ROW>
+		<id>127</id>
+		<name>Macedonia</name>
+		<iso>MK</iso>
+		<itu>+389</itu>
+	</ROW>
+
+	<ROW>
+		<id>128</id>
+		<name>Madagascar</name>
+		<iso>MG</iso>
+		<itu>+261</itu>
+	</ROW>
+
+	<ROW>
+		<id>129</id>
+		<name>Malawi</name>
+		<iso>MW</iso>
+		<itu>+265</itu>
+	</ROW>
+
+	<ROW>
+		<id>13</id>
+		<name>Australia</name>
+		<iso>AU</iso>
+		<itu>+61</itu>
+	</ROW>
+
+	<ROW>
+		<id>130</id>
+		<name>Malaysia</name>
+		<iso>MY</iso>
+		<itu>+60</itu>
+	</ROW>
+
+	<ROW>
+		<id>131</id>
+		<name>Maldives</name>
+		<iso>MV</iso>
+		<itu>+960</itu>
+	</ROW>
+
+	<ROW>
+		<id>132</id>
+		<name>Mali</name>
+		<iso>ML</iso>
+		<itu>+223</itu>
+	</ROW>
+
+	<ROW>
+		<id>133</id>
+		<name>Malta</name>
+		<iso>MT</iso>
+		<itu>+356</itu>
+	</ROW>
+
+	<ROW>
+		<id>134</id>
+		<name>Marshall Islands</name>
+		<iso>MH</iso>
+		<itu>+692</itu>
+	</ROW>
+
+	<ROW>
+		<id>135</id>
+		<name>Martinique</name>
+		<iso>MQ</iso>
+		<itu>+596</itu>
+	</ROW>
+
+	<ROW>
+		<id>136</id>
+		<name>Mauritania</name>
+		<iso>MR</iso>
+		<itu>+222</itu>
+	</ROW>
+
+	<ROW>
+		<id>137</id>
+		<name>Mauritius</name>
+		<iso>MU</iso>
+		<itu>+230</itu>
+	</ROW>
+
+	<ROW>
+		<id>138</id>
+		<name>Mayotte</name>
+		<iso>YT</iso>
+		<itu>+262</itu>
+	</ROW>
+
+	<ROW>
+		<id>139</id>
+		<name>Mexico</name>
+		<iso>MX</iso>
+		<itu>+52</itu>
+	</ROW>
+
+	<ROW>
+		<id>14</id>
+		<name>Austria</name>
+		<iso>AT</iso>
+		<itu>+43</itu>
+	</ROW>
+
+	<ROW>
+		<id>140</id>
+		<name>Micronesia, Federated States of</name>
+		<iso>FM</iso>
+		<itu>+691</itu>
+	</ROW>
+
+	<ROW>
+		<id>141</id>
+		<name>Moldova, Republic of</name>
+		<iso>MD</iso>
+		<itu>+373</itu>
+	</ROW>
+
+	<ROW>
+		<id>142</id>
+		<name>Monaco</name>
+		<iso>MC</iso>
+		<itu>+377</itu>
+	</ROW>
+
+	<ROW>
+		<id>143</id>
+		<name>Mongolia</name>
+		<iso>MN</iso>
+		<itu>+976</itu>
+	</ROW>
+
+	<ROW>
+		<id>144</id>
+		<name>Montenegro</name>
+		<iso>ME</iso>
+		<itu>+382</itu>
+	</ROW>
+
+	<ROW>
+		<id>145</id>
+		<name>Montserrat</name>
+		<iso>MS</iso>
+		<itu>+1664</itu>
+	</ROW>
+
+	<ROW>
+		<id>146</id>
+		<name>Morocco</name>
+		<iso>MA</iso>
+		<itu>+212</itu>
+	</ROW>
+
+	<ROW>
+		<id>147</id>
+		<name>Mozambique</name>
+		<iso>MZ</iso>
+		<itu>+258</itu>
+	</ROW>
+
+	<ROW>
+		<id>148</id>
+		<name>Myanmar</name>
+		<iso>MM</iso>
+		<itu>+95</itu>
+	</ROW>
+
+	<ROW>
+		<id>149</id>
+		<name>Namibia</name>
+		<iso>NA</iso>
+		<itu>+264</itu>
+	</ROW>
+
+	<ROW>
+		<id>15</id>
+		<name>Azerbaijan</name>
+		<iso>AZ</iso>
+		<itu>+994</itu>
+	</ROW>
+
+	<ROW>
+		<id>150</id>
+		<name>Nauru</name>
+		<iso>NR</iso>
+		<itu>+674</itu>
+	</ROW>
+
+	<ROW>
+		<id>151</id>
+		<name>Nepal</name>
+		<iso>NP</iso>
+		<itu>+977</itu>
+	</ROW>
+
+	<ROW>
+		<id>152</id>
+		<name>Netherlands</name>
+		<iso>NL</iso>
+		<itu>+31</itu>
+	</ROW>
+
+	<ROW>
+		<id>153</id>
+		<name>Netherlands Antilles</name>
+		<iso>AN</iso>
+		<itu>+599</itu>
+	</ROW>
+
+	<ROW>
+		<id>154</id>
+		<name>New Caledonia</name>
+		<iso>NC</iso>
+		<itu>+687</itu>
+	</ROW>
+
+	<ROW>
+		<id>155</id>
+		<name>New Zealand</name>
+		<iso>NZ</iso>
+		<itu>+64</itu>
+	</ROW>
+
+	<ROW>
+		<id>156</id>
+		<name>Nicaragua</name>
+		<iso>NI</iso>
+		<itu>+505</itu>
+	</ROW>
+
+	<ROW>
+		<id>157</id>
+		<name>Niger</name>
+		<iso>NE</iso>
+		<itu>+227</itu>
+	</ROW>
+
+	<ROW>
+		<id>158</id>
+		<name>Nigeria</name>
+		<iso>NG</iso>
+		<itu>+234</itu>
+	</ROW>
+
+	<ROW>
+		<id>159</id>
+		<name>Niue</name>
+		<iso>NU</iso>
+		<itu>+683</itu>
+	</ROW>
+
+	<ROW>
+		<id>16</id>
+		<name>Bahamas</name>
+		<iso>BS</iso>
+		<itu>+1242</itu>
+	</ROW>
+
+	<ROW>
+		<id>160</id>
+		<name>Norfolk Island</name>
+		<iso>NF</iso>
+		<itu>+672</itu>
+	</ROW>
+
+	<ROW>
+		<id>161</id>
+		<name>Northern Mariana Islands</name>
+		<iso>MP</iso>
+		<itu>+1670</itu>
+	</ROW>
+
+	<ROW>
+		<id>162</id>
+		<name>Norway</name>
+		<iso>NO</iso>
+		<itu>+47</itu>
+	</ROW>
+
+	<ROW>
+		<id>163</id>
+		<name>Oman</name>
+		<iso>OM</iso>
+		<itu>+968</itu>
+	</ROW>
+
+	<ROW>
+		<id>164</id>
+		<name>Pakistan</name>
+		<iso>PK</iso>
+		<itu>+92</itu>
+	</ROW>
+
+	<ROW>
+		<id>165</id>
+		<name>Palau</name>
+		<iso>PW</iso>
+		<itu>+680</itu>
+	</ROW>
+
+	<ROW>
+		<id>166</id>
+		<name>Palestinian Territory</name>
+		<iso>PS</iso>
+		<itu>+970</itu>
+	</ROW>
+
+	<ROW>
+		<id>167</id>
+		<name>Panama</name>
+		<iso>PA</iso>
+		<itu>+507</itu>
+	</ROW>
+
+	<ROW>
+		<id>168</id>
+		<name>Papua New Guinea</name>
+		<iso>PG</iso>
+		<itu>+675</itu>
+	</ROW>
+
+	<ROW>
+		<id>169</id>
+		<name>Paraguay</name>
+		<iso>PY</iso>
+		<itu>+595</itu>
+	</ROW>
+
+	<ROW>
+		<id>17</id>
+		<name>Bahrain</name>
+		<iso>BH</iso>
+		<itu>+973</itu>
+	</ROW>
+
+	<ROW>
+		<id>170</id>
+		<name>Peru</name>
+		<iso>PE</iso>
+		<itu>+51</itu>
+	</ROW>
+
+	<ROW>
+		<id>171</id>
+		<name>Philippines</name>
+		<iso>PH</iso>
+		<itu>+63</itu>
+	</ROW>
+
+	<ROW>
+		<id>172</id>
+		<name>Pitcairn</name>
+		<iso>PN</iso>
+		<itu>+870</itu>
+	</ROW>
+
+	<ROW>
+		<id>173</id>
+		<name>Poland</name>
+		<iso>PL</iso>
+		<itu>+48</itu>
+	</ROW>
+
+	<ROW>
+		<id>174</id>
+		<name>Portugal</name>
+		<iso>PT</iso>
+		<itu>+351</itu>
+	</ROW>
+
+	<ROW>
+		<id>175</id>
+		<name>Puerto Rico</name>
+		<iso>PR</iso>
+		<itu>+1</itu>
+	</ROW>
+
+	<ROW>
+		<id>176</id>
+		<name>Qatar</name>
+		<iso>QA</iso>
+		<itu>+974</itu>
+	</ROW>
+
+	<ROW>
+		<id>177</id>
+		<name>Reunion</name>
+		<iso>RE</iso>
+		<itu>+262</itu>
+	</ROW>
+
+	<ROW>
+		<id>178</id>
+		<name>Romania</name>
+		<iso>RO</iso>
+		<itu>+40</itu>
+	</ROW>
+
+	<ROW>
+		<id>179</id>
+		<name>Russia</name>
+		<iso>RU</iso>
+		<itu>+7</itu>
+	</ROW>
+
+	<ROW>
+		<id>18</id>
+		<name>Bangladesh</name>
+		<iso>BD</iso>
+		<itu>+880</itu>
+	</ROW>
+
+	<ROW>
+		<id>180</id>
+		<name>Rwanda</name>
+		<iso>RW</iso>
+		<itu>+250</itu>
+	</ROW>
+
+	<ROW>
+		<id>181</id>
+		<name>Saint Helena</name>
+		<iso>SH</iso>
+		<itu>+290</itu>
+	</ROW>
+
+	<ROW>
+		<id>182</id>
+		<name>Saint Kitts and Nevis</name>
+		<iso>KN</iso>
+		<itu>+1869</itu>
+	</ROW>
+
+	<ROW>
+		<id>183</id>
+		<name>Saint Lucia</name>
+		<iso>LC</iso>
+		<itu>+1758</itu>
+	</ROW>
+
+	<ROW>
+		<id>184</id>
+		<name>Saint Pierre and Miquelon</name>
+		<iso>PM</iso>
+		<itu>+508</itu>
+	</ROW>
+
+	<ROW>
+		<id>185</id>
+		<name>Saint Vincent and The Grenadines</name>
+		<iso>VC</iso>
+		<itu>+1784</itu>
+	</ROW>
+
+	<ROW>
+		<id>186</id>
+		<name>Samoa</name>
+		<iso>WS</iso>
+		<itu>+685</itu>
+	</ROW>
+
+	<ROW>
+		<id>187</id>
+		<name>San Marino</name>
+		<iso>SM</iso>
+		<itu>+378</itu>
+	</ROW>
+
+	<ROW>
+		<id>188</id>
+		<name>Sao Tome and Principe</name>
+		<iso>ST</iso>
+		<itu>+239</itu>
+	</ROW>
+
+	<ROW>
+		<id>189</id>
+		<name>Saudi Arabia</name>
+		<iso>SA</iso>
+		<itu>+966</itu>
+	</ROW>
+
+	<ROW>
+		<id>19</id>
+		<name>Barbados</name>
+		<iso>BB</iso>
+		<itu>+1246</itu>
+	</ROW>
+
+	<ROW>
+		<id>190</id>
+		<name>Senegal</name>
+		<iso>SN</iso>
+		<itu>+221</itu>
+	</ROW>
+
+	<ROW>
+		<id>191</id>
+		<name>Serbia and Montenegro</name>
+		<iso>RS</iso>
+		<itu>+381</itu>
+	</ROW>
+
+	<ROW>
+		<id>192</id>
+		<name>Seychelles</name>
+		<iso>SC</iso>
+		<itu>+248</itu>
+	</ROW>
+
+	<ROW>
+		<id>193</id>
+		<name>Sierra Leone</name>
+		<iso>SL</iso>
+		<itu>+232</itu>
+	</ROW>
+
+	<ROW>
+		<id>194</id>
+		<name>Singapore</name>
+		<iso>SG</iso>
+		<itu>+65</itu>
+	</ROW>
+
+	<ROW>
+		<id>195</id>
+		<name>Slovakia</name>
+		<iso>SK</iso>
+		<itu>+421</itu>
+	</ROW>
+
+	<ROW>
+		<id>196</id>
+		<name>Slovenia</name>
+		<iso>SI</iso>
+		<itu>+386</itu>
+	</ROW>
+
+	<ROW>
+		<id>197</id>
+		<name>Solomon Islands</name>
+		<iso>SB</iso>
+		<itu>+677</itu>
+	</ROW>
+
+	<ROW>
+		<id>198</id>
+		<name>Somalia</name>
+		<iso>SO</iso>
+		<itu>+252</itu>
+	</ROW>
+
+	<ROW>
+		<id>199</id>
+		<name>South Africa</name>
+		<iso>ZA</iso>
+		<itu>+27</itu>
+	</ROW>
+
+	<ROW>
+		<id>2</id>
+		<name>Albania</name>
+		<iso>AL</iso>
+		<itu>+355</itu>
+	</ROW>
+
+	<ROW>
+		<id>20</id>
+		<name>Belarus</name>
+		<iso>BY</iso>
+		<itu>+375</itu>
+	</ROW>
+
+	<ROW>
+		<id>200</id>
+		<name>South Georgia and The South Sandwich Islands</name>
+		<iso>GS</iso>
+		<itu>+500</itu>
+	</ROW>
+
+	<ROW>
+		<id>201</id>
+		<name>Spain</name>
+		<iso>ES</iso>
+		<itu>+34</itu>
+	</ROW>
+
+	<ROW>
+		<id>202</id>
+		<name>Sri Lanka</name>
+		<iso>LK</iso>
+		<itu>+94</itu>
+	</ROW>
+
+	<ROW>
+		<id>203</id>
+		<name>Sudan</name>
+		<iso>SD</iso>
+		<itu>+249</itu>
+	</ROW>
+
+	<ROW>
+		<id>204</id>
+		<name>Suriname</name>
+		<iso>SR</iso>
+		<itu>+597</itu>
+	</ROW>
+
+	<ROW>
+		<id>205</id>
+		<name>Svalbard and Jan Mayen</name>
+		<iso>SJ</iso>
+		<itu>+47</itu>
+	</ROW>
+
+	<ROW>
+		<id>206</id>
+		<name>Swaziland</name>
+		<iso>SZ</iso>
+		<itu>+268</itu>
+	</ROW>
+
+	<ROW>
+		<id>207</id>
+		<name>Sweden</name>
+		<iso>SE</iso>
+		<itu>+46</itu>
+	</ROW>
+
+	<ROW>
+		<id>208</id>
+		<name>Switzerland</name>
+		<iso>CH</iso>
+		<itu>+41</itu>
+	</ROW>
+
+	<ROW>
+		<id>209</id>
+		<name>Syria</name>
+		<iso>SY</iso>
+		<itu>+963</itu>
+	</ROW>
+
+	<ROW>
+		<id>21</id>
+		<name>Belgium</name>
+		<iso>BE</iso>
+		<itu>+32</itu>
+	</ROW>
+
+	<ROW>
+		<id>210</id>
+		<name>Taiwan</name>
+		<iso>TW</iso>
+		<itu>+886</itu>
+	</ROW>
+
+	<ROW>
+		<id>211</id>
+		<name>Tajikistan</name>
+		<iso>TJ</iso>
+		<itu>+992</itu>
+	</ROW>
+
+	<ROW>
+		<id>212</id>
+		<name>Tanzania, United Republic of</name>
+		<iso>TZ</iso>
+		<itu>+255</itu>
+	</ROW>
+
+	<ROW>
+		<id>213</id>
+		<name>Thailand</name>
+		<iso>TH</iso>
+		<itu>+66</itu>
+	</ROW>
+
+	<ROW>
+		<id>214</id>
+		<name>Timor-leste</name>
+		<iso>TL</iso>
+		<itu>+670</itu>
+	</ROW>
+
+	<ROW>
+		<id>215</id>
+		<name>Togo</name>
+		<iso>TG</iso>
+		<itu>+228</itu>
+	</ROW>
+
+	<ROW>
+		<id>216</id>
+		<name>Tokelau</name>
+		<iso>TK</iso>
+		<itu>+690</itu>
+	</ROW>
+
+	<ROW>
+		<id>217</id>
+		<name>Tonga</name>
+		<iso>TO</iso>
+		<itu>+676</itu>
+	</ROW>
+
+	<ROW>
+		<id>218</id>
+		<name>Trinidad and Tobago</name>
+		<iso>TT</iso>
+		<itu>+1868</itu>
+	</ROW>
+
+	<ROW>
+		<id>219</id>
+		<name>Tunisia</name>
+		<iso>TN</iso>
+		<itu>+216</itu>
+	</ROW>
+
+	<ROW>
+		<id>22</id>
+		<name>Belize</name>
+		<iso>BZ</iso>
+		<itu>+501</itu>
+	</ROW>
+
+	<ROW>
+		<id>220</id>
+		<name>Turkey</name>
+		<iso>TR</iso>
+		<itu>+90</itu>
+	</ROW>
+
+	<ROW>
+		<id>221</id>
+		<name>Turkmenistan</name>
+		<iso>TM</iso>
+		<itu>+993</itu>
+	</ROW>
+
+	<ROW>
+		<id>222</id>
+		<name>Turks and Caicos Islands</name>
+		<iso>TC</iso>
+		<itu>+1649</itu>
+	</ROW>
+
+	<ROW>
+		<id>223</id>
+		<name>Tuvalu</name>
+		<iso>TV</iso>
+		<itu>+688</itu>
+	</ROW>
+
+	<ROW>
+		<id>224</id>
+		<name>Uganda</name>
+		<iso>UG</iso>
+		<itu>+256</itu>
+	</ROW>
+
+	<ROW>
+		<id>225</id>
+		<name>Ukraine</name>
+		<iso>UA</iso>
+		<itu>+380</itu>
+	</ROW>
+
+	<ROW>
+		<id>226</id>
+		<name>United Arab Emirates</name>
+		<iso>AE</iso>
+		<itu>+971</itu>
+	</ROW>
+
+	<ROW>
+		<id>227</id>
+		<name>United Kingdom</name>
+		<iso>GB</iso>
+		<itu>+44</itu>
+	</ROW>
+
+	<ROW>
+		<id>228</id>
+		<name>United States</name>
+		<iso>US</iso>
+		<itu>+1</itu>
+	</ROW>
+
+	<ROW>
+		<id>229</id>
+		<name>United States Minor Outlying Islands</name>
+		<iso>UM</iso>
+		<itu>+1</itu>
+	</ROW>
+
+	<ROW>
+		<id>23</id>
+		<name>Benin</name>
+		<iso>BJ</iso>
+		<itu>+229</itu>
+	</ROW>
+
+	<ROW>
+		<id>230</id>
+		<name>Uruguay</name>
+		<iso>UY</iso>
+		<itu>+598</itu>
+	</ROW>
+
+	<ROW>
+		<id>231</id>
+		<name>Uzbekistan</name>
+		<iso>UZ</iso>
+		<itu>+998</itu>
+	</ROW>
+
+	<ROW>
+		<id>232</id>
+		<name>Vanuatu</name>
+		<iso>VU</iso>
+		<itu>+678</itu>
+	</ROW>
+
+	<ROW>
+		<id>233</id>
+		<name>Vatican City</name>
+		<iso>VA</iso>
+		<itu>+379</itu>
+	</ROW>
+
+	<ROW>
+		<id>234</id>
+		<name>Venezuela</name>
+		<iso>VE</iso>
+		<itu>+58</itu>
+	</ROW>
+
+	<ROW>
+		<id>235</id>
+		<name>Vietnam</name>
+		<iso>VN</iso>
+		<itu>+84</itu>
+	</ROW>
+
+	<ROW>
+		<id>236</id>
+		<name>Virgin Islands, British</name>
+		<iso>VG</iso>
+		<itu>+1284</itu>
+	</ROW>
+
+	<ROW>
+		<id>237</id>
+		<name>Virgin Islands, U.S.</name>
+		<iso>VI</iso>
+		<itu>+1340</itu>
+	</ROW>
+
+	<ROW>
+		<id>238</id>
+		<name>Wallis and Futuna</name>
+		<iso>WF</iso>
+		<itu>+681</itu>
+	</ROW>
+
+	<ROW>
+		<id>239</id>
+		<name>Western Sahara</name>
+		<iso>EH</iso>
+		<itu>+212</itu>
+	</ROW>
+
+	<ROW>
+		<id>24</id>
+		<name>Bermuda</name>
+		<iso>BM</iso>
+		<itu>+1441</itu>
+	</ROW>
+
+	<ROW>
+		<id>240</id>
+		<name>Yemen</name>
+		<iso>YE</iso>
+		<itu>+967</itu>
+	</ROW>
+
+	<ROW>
+		<id>241</id>
+		<name>Zambia</name>
+		<iso>ZM</iso>
+		<itu>+260</itu>
+	</ROW>
+
+	<ROW>
+		<id>242</id>
+		<name>Zimbabwe</name>
+		<iso>ZW</iso>
+		<itu>+263</itu>
+	</ROW>
+
+	<ROW>
+		<id>25</id>
+		<name>Bhutan</name>
+		<iso>BT</iso>
+		<itu>+975</itu>
+	</ROW>
+
+	<ROW>
+		<id>26</id>
+		<name>Bolivia</name>
+		<iso>BO</iso>
+		<itu>+591</itu>
+	</ROW>
+
+	<ROW>
+		<id>27</id>
+		<name>Bosnia and Herzegovina</name>
+		<iso>BA</iso>
+		<itu>+387</itu>
+	</ROW>
+
+	<ROW>
+		<id>28</id>
+		<name>Botswana</name>
+		<iso>BW</iso>
+		<itu>+267</itu>
+	</ROW>
+
+	<ROW>
+		<id>29</id>
+		<name>Bouvet Island</name>
+		<iso>BV</iso>
+		<itu>+47</itu>
+	</ROW>
+
+	<ROW>
+		<id>3</id>
+		<name>Algeria</name>
+		<iso>DZ</iso>
+		<itu>+213</itu>
+	</ROW>
+
+	<ROW>
+		<id>30</id>
+		<name>Brazil</name>
+		<iso>BR</iso>
+		<itu>+55</itu>
+	</ROW>
+
+	<ROW>
+		<id>31</id>
+		<name>British Indian Ocean Territory</name>
+		<iso>IO</iso>
+		<itu>+246</itu>
+	</ROW>
+
+	<ROW>
+		<id>32</id>
+		<name>Brunei Darussalam</name>
+		<iso>BN</iso>
+		<itu>+673</itu>
+	</ROW>
+
+	<ROW>
+		<id>33</id>
+		<name>Bulgaria</name>
+		<iso>BG</iso>
+		<itu>+359</itu>
+	</ROW>
+
+	<ROW>
+		<id>34</id>
+		<name>Burkina Faso</name>
+		<iso>BF</iso>
+		<itu>+226</itu>
+	</ROW>
+
+	<ROW>
+		<id>35</id>
+		<name>Burundi</name>
+		<iso>BI</iso>
+		<itu>+257</itu>
+	</ROW>
+
+	<ROW>
+		<id>36</id>
+		<name>Cambodia</name>
+		<iso>KH</iso>
+		<itu>+855</itu>
+	</ROW>
+
+	<ROW>
+		<id>37</id>
+		<name>Cameroon</name>
+		<iso>CM</iso>
+		<itu>+237</itu>
+	</ROW>
+
+	<ROW>
+		<id>38</id>
+		<name>Canada</name>
+		<iso>CA</iso>
+		<itu>+1</itu>
+	</ROW>
+
+	<ROW>
+		<id>39</id>
+		<name>Cape Verde</name>
+		<iso>CV</iso>
+		<itu>+238</itu>
+	</ROW>
+
+	<ROW>
+		<id>4</id>
+		<name>American Samoa</name>
+		<iso>AS</iso>
+		<itu>+1684</itu>
+	</ROW>
+
+	<ROW>
+		<id>40</id>
+		<name>Cayman Islands</name>
+		<iso>KY</iso>
+		<itu>+1345</itu>
+	</ROW>
+
+	<ROW>
+		<id>41</id>
+		<name>Central African Republic</name>
+		<iso>CF</iso>
+		<itu>+236</itu>
+	</ROW>
+
+	<ROW>
+		<id>42</id>
+		<name>Chad</name>
+		<iso>TD</iso>
+		<itu>+235</itu>
+	</ROW>
+
+	<ROW>
+		<id>43</id>
+		<name>Chile</name>
+		<iso>CL</iso>
+		<itu>+56</itu>
+	</ROW>
+
+	<ROW>
+		<id>44</id>
+		<name>China</name>
+		<iso>CN</iso>
+		<itu>+86</itu>
+	</ROW>
+
+	<ROW>
+		<id>45</id>
+		<name>Christmas Island</name>
+		<iso>CX</iso>
+		<itu>+61</itu>
+	</ROW>
+
+	<ROW>
+		<id>46</id>
+		<name>Cocos (Keeling) Islands</name>
+		<iso>CC</iso>
+		<itu>+61</itu>
+	</ROW>
+
+	<ROW>
+		<id>47</id>
+		<name>Colombia</name>
+		<iso>CO</iso>
+		<itu>+57</itu>
+	</ROW>
+
+	<ROW>
+		<id>48</id>
+		<name>Comoros</name>
+		<iso>KM</iso>
+		<itu>+269</itu>
+	</ROW>
+
+	<ROW>
+		<id>49</id>
+		<name>Congo</name>
+		<iso>CG</iso>
+		<itu>+242</itu>
+	</ROW>
+
+	<ROW>
+		<id>5</id>
+		<name>Andorra</name>
+		<iso>AD</iso>
+		<itu>+376</itu>
+	</ROW>
+
+	<ROW>
+		<id>50</id>
+		<name>Congo, The Democratic Republic of The</name>
+		<iso>CD</iso>
+		<itu>+243</itu>
+	</ROW>
+
+	<ROW>
+		<id>51</id>
+		<name>Cook Islands</name>
+		<iso>CK</iso>
+		<itu>+682</itu>
+	</ROW>
+
+	<ROW>
+		<id>52</id>
+		<name>Costa Rica</name>
+		<iso>CR</iso>
+		<itu>+506</itu>
+	</ROW>
+
+	<ROW>
+		<id>53</id>
+		<name>Cote D&#39;ivoire</name>
+		<iso>CI</iso>
+		<itu>+225</itu>
+	</ROW>
+
+	<ROW>
+		<id>54</id>
+		<name>Croatia</name>
+		<iso>HR</iso>
+		<itu>+385</itu>
+	</ROW>
+
+	<ROW>
+		<id>55</id>
+		<name>Cuba</name>
+		<iso>CU</iso>
+		<itu>+53</itu>
+	</ROW>
+
+	<ROW>
+		<id>56</id>
+		<name>Cyprus</name>
+		<iso>CY</iso>
+		<itu>+357</itu>
+	</ROW>
+
+	<ROW>
+		<id>57</id>
+		<name>Czech Republic</name>
+		<iso>CZ</iso>
+		<itu>+420</itu>
+	</ROW>
+
+	<ROW>
+		<id>58</id>
+		<name>Denmark</name>
+		<iso>DK</iso>
+		<itu>+45</itu>
+	</ROW>
+
+	<ROW>
+		<id>59</id>
+		<name>Djibouti</name>
+		<iso>DJ</iso>
+		<itu>+253</itu>
+	</ROW>
+
+	<ROW>
+		<id>6</id>
+		<name>Angola</name>
+		<iso>AO</iso>
+		<itu>+244</itu>
+	</ROW>
+
+	<ROW>
+		<id>60</id>
+		<name>Dominica</name>
+		<iso>DM</iso>
+		<itu>+1767</itu>
+	</ROW>
+
+	<ROW>
+		<id>61</id>
+		<name>Dominican Republic</name>
+		<iso>DO</iso>
+		<itu>+1809</itu>
+	</ROW>
+
+	<ROW>
+		<id>62</id>
+		<name>Easter Island</name>
+		<iso>CL</iso>
+		<itu>+5632</itu>
+	</ROW>
+
+	<ROW>
+		<id>63</id>
+		<name>Ecuador</name>
+		<iso>EC</iso>
+		<itu>+593</itu>
+	</ROW>
+
+	<ROW>
+		<id>64</id>
+		<name>Egypt</name>
+		<iso>EG</iso>
+		<itu>+20</itu>
+	</ROW>
+
+	<ROW>
+		<id>65</id>
+		<name>El Salvador</name>
+		<iso>SV</iso>
+		<itu>+503</itu>
+	</ROW>
+
+	<ROW>
+		<id>66</id>
+		<name>Equatorial Guinea</name>
+		<iso>GQ</iso>
+		<itu>+240</itu>
+	</ROW>
+
+	<ROW>
+		<id>67</id>
+		<name>Eritrea</name>
+		<iso>ER</iso>
+		<itu>+291</itu>
+	</ROW>
+
+	<ROW>
+		<id>68</id>
+		<name>Estonia</name>
+		<iso>EE</iso>
+		<itu>+372</itu>
+	</ROW>
+
+	<ROW>
+		<id>69</id>
+		<name>Ethiopia</name>
+		<iso>ET</iso>
+		<itu>+251</itu>
+	</ROW>
+
+	<ROW>
+		<id>7</id>
+		<name>Anguilla</name>
+		<iso>AI</iso>
+		<itu>+1264</itu>
+	</ROW>
+
+	<ROW>
+		<id>70</id>
+		<name>Falkland Islands (Malvinas)</name>
+		<iso>FK</iso>
+		<itu>+500</itu>
+	</ROW>
+
+	<ROW>
+		<id>71</id>
+		<name>Faroe Islands</name>
+		<iso>FO</iso>
+		<itu>+298</itu>
+	</ROW>
+
+	<ROW>
+		<id>72</id>
+		<name>Fiji</name>
+		<iso>FJ</iso>
+		<itu>+679</itu>
+	</ROW>
+
+	<ROW>
+		<id>73</id>
+		<name>Finland</name>
+		<iso>FI</iso>
+		<itu>+358</itu>
+	</ROW>
+
+	<ROW>
+		<id>74</id>
+		<name>France</name>
+		<iso>FR</iso>
+		<itu>+33</itu>
+	</ROW>
+
+	<ROW>
+		<id>75</id>
+		<name>French Guiana</name>
+		<iso>GF</iso>
+		<itu>+594</itu>
+	</ROW>
+
+	<ROW>
+		<id>76</id>
+		<name>French Polynesia</name>
+		<iso>PF</iso>
+		<itu>+689</itu>
+	</ROW>
+
+	<ROW>
+		<id>77</id>
+		<name>French Southern Territories</name>
+		<iso>TF</iso>
+		<itu>+262</itu>
+	</ROW>
+
+	<ROW>
+		<id>78</id>
+		<name>Gabon</name>
+		<iso>GA</iso>
+		<itu>+241</itu>
+	</ROW>
+
+	<ROW>
+		<id>79</id>
+		<name>Gambia</name>
+		<iso>GM</iso>
+		<itu>+220</itu>
+	</ROW>
+
+	<ROW>
+		<id>8</id>
+		<name>Antarctica</name>
+		<iso>AQ</iso>
+		<itu>+672</itu>
+	</ROW>
+
+	<ROW>
+		<id>80</id>
+		<name>Georgia</name>
+		<iso>GE</iso>
+		<itu>+995</itu>
+	</ROW>
+
+	<ROW>
+		<id>81</id>
+		<name>Germany</name>
+		<iso>DE</iso>
+		<itu>+49</itu>
+	</ROW>
+
+	<ROW>
+		<id>82</id>
+		<name>Ghana</name>
+		<iso>GH</iso>
+		<itu>+233</itu>
+	</ROW>
+
+	<ROW>
+		<id>83</id>
+		<name>Gibraltar</name>
+		<iso>GI</iso>
+		<itu>+350</itu>
+	</ROW>
+
+	<ROW>
+		<id>84</id>
+		<name>Greece</name>
+		<iso>GR</iso>
+		<itu>+30</itu>
+	</ROW>
+
+	<ROW>
+		<id>85</id>
+		<name>Greenland</name>
+		<iso>GL</iso>
+		<itu>+299</itu>
+	</ROW>
+
+	<ROW>
+		<id>86</id>
+		<name>Grenada</name>
+		<iso>GD</iso>
+		<itu>+1473</itu>
+	</ROW>
+
+	<ROW>
+		<id>87</id>
+		<name>Guadeloupe</name>
+		<iso>GP</iso>
+		<itu>+590</itu>
+	</ROW>
+
+	<ROW>
+		<id>88</id>
+		<name>Guam</name>
+		<iso>GU</iso>
+		<itu>+1671</itu>
+	</ROW>
+
+	<ROW>
+		<id>89</id>
+		<name>Guatemala</name>
+		<iso>GT</iso>
+		<itu>+502</itu>
+	</ROW>
+
+	<ROW>
+		<id>9</id>
+		<name>Antigua and Barbuda</name>
+		<iso>AG</iso>
+		<itu>+1268</itu>
+	</ROW>
+
+	<ROW>
+		<id>90</id>
+		<name>Guinea</name>
+		<iso>GN</iso>
+		<itu>+224</itu>
+	</ROW>
+
+	<ROW>
+		<id>91</id>
+		<name>Guinea-bissau</name>
+		<iso>GW</iso>
+		<itu>+245</itu>
+	</ROW>
+
+	<ROW>
+		<id>92</id>
+		<name>Guyana</name>
+		<iso>GY</iso>
+		<itu>+592</itu>
+	</ROW>
+
+	<ROW>
+		<id>93</id>
+		<name>Haiti</name>
+		<iso>HT</iso>
+		<itu>+509</itu>
+	</ROW>
+
+	<ROW>
+		<id>94</id>
+		<name>Heard Island and Mcdonald Islands</name>
+		<iso>HM</iso>
+		<itu>+672</itu>
+	</ROW>
+
+	<ROW>
+		<id>95</id>
+		<name>Honduras</name>
+		<iso>HN</iso>
+		<itu>+504</itu>
+	</ROW>
+
+	<ROW>
+		<id>96</id>
+		<name>Hong Kong</name>
+		<iso>HK</iso>
+		<itu>+852</itu>
+	</ROW>
+
+	<ROW>
+		<id>97</id>
+		<name>Hungary</name>
+		<iso>HU</iso>
+		<itu>+36</itu>
+	</ROW>
+
+	<ROW>
+		<id>98</id>
+		<name>Iceland</name>
+		<iso>IS</iso>
+		<itu>+354</itu>
+	</ROW>
+
+	<ROW>
+		<id>99</id>
+		<name>India</name>
+		<iso>IN</iso>
+		<itu>+91</itu>
+	</ROW>
+</DATA>

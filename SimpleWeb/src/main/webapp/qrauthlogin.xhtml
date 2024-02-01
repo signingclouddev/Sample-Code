@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>QR Authentication</title>
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <h:outputScript library="js" name="qrcode.js"/>
+    </h:head>
+    
+    <h:body>
+        <div class="container-fluid">
+            <div class="col" style="background-color: #81D4FA; min-height:100vh;">
+        
+                <div style="background-color: #B3E5FC;">
+                    <div id="icon" class="px-3 py-3 text-center" onclick="alert('Hello');">
+                        <img src="resources/images/simplelogo.png" alt="icon" style="width:32px; height:32px;"/>
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 21px; font-weight: bold;">SimpleWeb</span>
+                    </div>
+                </div>
+
+                <div class="mx-2">
+                    <p:commandButton icon="pi pi-chevron-left" styleClass="rounded-button" onclick="window.history.back();" style="border: 0; height: 50px; width: 50px; margin-left: 25px; margin-top: 25px;  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);"/>
+                </div>
+
+                <div class="container shadow-lg px-3 py-3" style="background-color: #E3F2FD; width: 50%; height: 50%; border-radius: 30px;">
+                   
+                    <div class="px-3 py-4 text-center">
+                        <h:inputHidden id="qrcode" value="#{qrauth.qrcode}"/>
+                        <div id="qrcodeAuthentication" class="h-100 d-flex align-items-center justify-content-center"></div>
+                    </div>
+            
+                    <div class="mt-auto">
+                        <p class="px-3" style="font-weight: bold;">Please Scan the QR Code <br/> in Centagate App</p>
+                    </div>
+                </div>
+
+                <h:form id="pollingQR">
+                    <p:growl id="growl" widgetVar="growlqr" showDetail="true"/> 
+
+                    <h:inputHidden id="checkQR" value="#{qrauth.qrstatus}"/>
+                    <p:poll interval="1" listener="#{qrauth.checkAuthenticationStatus()}" update="checkQR"/>
+                </h:form>
+                
+                <h:form id="resQRForm">
+                    <h:commandButton id="successButton" value="Call Function" action="#{qrauth.redirectPage()}" style="display:none;"/>
+                </h:form>
+
+            </div>
+        </div>
+    </h:body>
+    
+    <style>
+        .container-fluid {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 23px;
+            text-align: center;
+        }
+
+        growl-summary {
+            font-size: 1.2em;
+        }
+
+        growl-detail {
+            font-size: 1em;
+        }
+    </style>
+
+    <h:outputScript>
+        var qr = document.getElementById('qrcode').value;
+        var qrcodes = new QRCode(document.getElementById("qrcodeAuthentication"), {
+            text: qr,
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        var interval = setInterval(function() {
+            var result = document.getElementById('pollingQR:checkQR').value;
+            console.log(result);
+            if(result == 0) {
+                var successButton = document.getElementById('resQRForm:successButton');
+                clearInterval(interval);
+                successButton.click();
+                
+            } else if(result == 23026) {
+                clearInterval(interval);
+                
+                PF('growlqr').renderMessage({
+                    'summary': 'Authentication rejected by user',
+                    'severity': 'error'
+                });
+
+                setTimeout(function() {
+                    window.history.back();
+                }, 1500);
+            }
+        }, 1000);
+    </h:outputScript>
+</html>

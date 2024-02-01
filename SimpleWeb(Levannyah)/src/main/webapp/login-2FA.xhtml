@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <title>Simple App | Login</title>
+    <ui:include src="/inc/header.xhtml"/>
+  </h:head>
+
+  <h:body styleClass="cyan lighten-5">
+    <section class="section methods-section center-align">
+      <div class="container">
+        <h:form>
+          <p:dialog id="imageDialog" header="Select an Authentication Method" widgetVar="imageDialog" global="true" showEffect="fade" hideEffect="fade" responsive="true" closable="false" visible="true" style="text-align: left;">
+            <h:panelGrid columns="5" cellpadding="5">
+              <p:commandLink onclick="redirectToOtp()" styleClass="black-text" style="text-decoration: none; font-size: 16px;">
+                <p:graphicImage value="webapp/resources/img/methods/otp.png" style="margin-right: 4rem;" styleClass="authImage"/><br />
+                <h:outputText value="OTP" style="margin-left: 2rem;"/>
+              </p:commandLink>
+
+              <p:commandLink action="#{crotpRequest.getCrotpRequest}" styleClass="black-text" style="text-decoration: none; font-size: 16px;">
+                <p:graphicImage value="webapp/resources/img/methods/crotp.png" style="margin-right: 4rem;" styleClass="authImage"/><br />
+                <h:outputText value="CR OTP" style="margin-left: 1rem;"/>
+              </p:commandLink>
+
+              <p:commandLink action="#{qrRequest.getQrRequest}" styleClass="black-text" style="text-decoration: none; font-size: 16px;">
+                <p:graphicImage value="webapp/resources/img/methods/qr.png" style="margin-right: 4rem;" styleClass="authImage"/><br />
+                <h:outputText value="QR Code" style="margin-left: 1rem;"/>
+              </p:commandLink>
+
+              <p:commandLink action="#{pushRequest.getPushRequest}" styleClass="black-text" style="text-decoration: none; font-size: 16px;">
+                <p:graphicImage value="webapp/resources/img/methods/push.png" style="margin-left: 1rem;" styleClass="authImage"/><br />
+                <h:outputText value="Push Notification"/>
+              </p:commandLink>
+          </h:panelGrid>
+
+            <div class="center-align" style="margin-top: 2em;">
+             <p:commandButton value="Cancel" onclick="redirectToLogin()" styleClass="ui-button-danger" style="width:20%"/>
+            </div>
+          </p:dialog>
+        </h:form>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      function loginDialog() {
+        PF('imageDialog').show();
+      }
+      function redirectToLogin() {
+        window.location.href = 'login.xhtml';
+     }
+
+     function redirectToOtp() {
+       window.location.href = 'login-otp.xhtml';
+     }
+    </script>
+
+    <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; position: fixed; bottom: 1rem; left: 0; right: 0;">
+      <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+    </div>
+
+    <ui:include src="/inc/footer.xhtml"/>
+  </h:body>
+</html>

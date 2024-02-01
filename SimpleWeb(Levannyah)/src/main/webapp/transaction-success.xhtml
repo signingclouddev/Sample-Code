@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+  <title>Simple App | Vote</title>
+  <script type="text/javascript" src="https://tenor.com/embed.js"></script>
+  <ui:include src="/inc/header.xhtml"/>
+</h:head>
+
+<h:body styleClass="cyan lighten-5">
+  <section class="section success-section center-align">
+    <div class="container">
+      <h:form>
+        <p:dialog id="successDialog" header="You Have Successfully Voted!" widgetVar="successDialog" global="true" showEffect="fade" hideEffect="fade" responsive="true" closable="false" visible="true" width="400">
+          <div class="tenor-gif-embed" data-postid="22694646" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+            <a href="https://tenor.com/view/dinosandcomics-dinosaur-dino-trex-rainbow-gif-22694646">Dinosandcomics Dinosaur Sticker</a>from <a href="https://tenor.com/search/dinosandcomics-stickers">Dinosandcomics Stickers</a>
+          </div>
+          <br/>
+          <h:outputText value="Thank you for voting"/><br/>
+          <p>Redirecting back to Home page in <time><strong id="seconds">8</strong> seconds</time>.</p>
+        </p:dialog>
+      </h:form>
+    </div>
+  </section>
+
+  <script type="text/javascript">
+    var el = document.getElementById('seconds'),
+    total = el.innerHTML,
+    timeinterval = setInterval(function () {
+        total = --total;
+        el.textContent = total;
+        if (total &lt;= 0) {
+            clearInterval(timeinterval);
+            window.location.href = 'index.xhtml';
+        }
+    }, 1000);
+  </script>
+
+  <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; position: fixed; bottom: 1rem; left: 0; right: 0;">
+    <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+  </div>
+
+  <ui:include src="/inc/footer.xhtml"/>
+</h:body>
+</html>

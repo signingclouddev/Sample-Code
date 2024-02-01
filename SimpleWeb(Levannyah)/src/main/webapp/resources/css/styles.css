@@ -1,0 +1,66 @@
+.authImage {
+    max-width: 90px;
+    max-height: 90px;
+}
+
+.authGif {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.btnTeal {
+    background-color: teal !important;
+    color: white !important;
+    border-color: teal !important;
+    margin-left: .5em !important;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  height: 25px;
+}
+
+/* Add borders to the table */
+.dataTables_wrapper table {
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+}
+
+.dataTables_wrapper th,
+.dataTables_wrapper td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px !important;
+}
+
+/* Change color of the border below the table header */
+#votersList_wrapper table {
+  border-collapse: collapse;
+}
+
+#votersList_wrapper thead th {
+  border-bottom: 1px solid #ddd;
+}
+
+#votersList_wrapper .paginate_button.current {
+  background-color: #009688 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Change color of the border below the table header */
+#candidatesList_wrapper table {
+  border-collapse: collapse;
+}
+
+#candidatesList_wrapper thead th {
+  border-bottom: 1px solid #ddd;
+}
+
+#candidatesList_wrapper .paginate_button.current {
+  background-color: #009688 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}

@@ -1,0 +1,11 @@
+loginjsf\Registration.class
+loginjsf\RegistrationResult.class
+loginjsf\Information.class
+loginjsf\Transaction.class
+loginjsf\Result.class
+loginjsf\CentagateAPI.class
+loginjsf\PushAuth.class
+loginjsf\Login.class
+loginjsf\RegisterMisc.class
+loginjsf\QRAuth.class
+loginjsf\TransactionSign.class

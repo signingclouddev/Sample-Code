@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <title>Simple App | Login</title>
+    <ui:include src="/inc/header.xhtml"/>
+  </h:head>
+
+  <h:body styleClass="cyan lighten-5">
+    <section class="section crotp-section center-align">
+    <div class="container">
+        <h:form>
+          <p:dialog id="crotpDialog" header="CR OTP" widgetVar="crotpDialog" global="true" showEffect="fade" hideEffect="fade" responsive="true" closable="false" visible="true" width="400">
+            <p:graphicImage value="webapp/resources/img/methods/crotp.gif" styleClass="authGif"/><br/>
+            <h:outputText value="Hello, "/>
+            <strong><h:outputText value="#{adaptive.username}"/></strong>
+            <div class="input-field" style="margin-top: 2em;">
+             <h:outputText value="OTP Challenge: "/>
+              <strong><h:outputText value="#{crotpLogin.challenge}"/></strong>
+            </div>
+
+            <div class="input-field" style="margin-top: 2em;">
+             <p:inputText id="crOtp" required="true" value="#{crotpLogin.crOtp}" autocomplete="off"/>
+              <h:outputLabel for="crOtp" value="Enter OTP"/>
+            </div>
+
+            <div style="margin-top: 2em;">
+              <p:commandButton type="button" value="Cancel" onclick="redirectToLogin()" styleClass="ui-button-danger" style="width:40%"/>
+              <p:commandButton  type="submit" action="#{crotpLogin.crotpAuth}" value="Login" onclick="showOtpChallenge()" styleClass="btnTeal" style="width:40%"/>
+            </div>
+          </p:dialog>
+        </h:form>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+        function showOtpChallenge() {
+          var challenge = '#{crotpLogin.challenge}';
+          var otpChallengeText = document.getElementById('otpChallengeText');
+          otpChallengeText.innerText = 'OTP Challenge: ' + challenge;
+        }
+
+        function redirectToLogin() {
+           window.location.href = 'login.xhtml';
+         }
+      </script>
+
+    <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; position: fixed; bottom: 1rem; left: 0; right: 0;">
+      <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+    </div>
+
+    <ui:include src="/inc/footer.xhtml"/>
+  </h:body>
+</html>

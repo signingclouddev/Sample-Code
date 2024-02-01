@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="https://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://xmlns.jcp.org/xml/ns/javaee
+	https://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <from-view-id>/prelogin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/prelogin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>methodAuthentication</from-outcome>
+            <to-view-id>/methodAuth.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/methodAuth.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>authenticationCrOtp</from-outcome>
+            <to-view-id>/authCrOtp.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/authCrOtp.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/methodAuth.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>checkAuthenticationState</from-outcome>
+            <to-view-id>/checkAuthState.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/checkAuthState.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/welcome.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/welcome.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>leaveBalance</from-outcome>
+            <to-view-id>/leaveBalance.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <application>
+        <resource-handler>org.primefaces.application.resource.PrimeResourceHandler</resource-handler>
+    </application>
+
+</faces-config>

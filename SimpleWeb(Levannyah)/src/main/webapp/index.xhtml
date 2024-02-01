@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <h:head>
+    <title>Simple App | Home</title>
+    <ui:include src="/inc/header.xhtml"/>
+    <style>
+      .custom-container {
+        padding-left: 100px;
+        padding-right: 100px;
+      }
+
+      .candidateImg {
+        width: auto;
+        height: auto;
+      }
+
+      .name {
+        color: teal;
+        font-size: 25px;
+        font-weight: 500;
+      }
+    </style>
+  </h:head>
+
+  <h:body styleClass="cyan lighten-5">
+    <ui:include src="/inc/navbar-user.xhtml"/>
+
+    <section id="vote" class="section section-vote"  style="text-align: center;">
+      <div class="custom-container">
+        <div class="row">
+          <h4 style="margin-top: 2rem; margin-bottom: 2rem;">Candidates</h4>
+          <h:form>
+            <p:growl id="growl" showDetail="true" />
+            <ui:repeat value="#{candidates.candidates}" var="candidate">
+              <div class="col s12 m6 l3">
+                <div class="card sticky-action">
+                  <div class="card-image">
+                    <p:graphicImage value="#{candidate.img}" styleClass="candidateImg" />
+                  </div>
+                  <div class="card-content">
+                    <input type="hidden" value="#{candidate.id}"/>
+                    <input type="hidden" value="#{candidate.votes}"/>
+                    <div class="card-title activator grey-text text-darken-4">
+                      <h:outputText value="#{candidate.name}" styleClass="name" style="margin-left: 3rem;" />
+                      <i class="material-icons right">more_vert</i>
+                    </div>
+                    <h:outputText value="Faculty of #{candidate.faculty}" /><br />
+                    <div class="card-action">
+                      <p:commandButton value="Vote" styleClass="btnTeal" action="#{candidates.selectedCandidate(candidate.id)}" disabled="#{candidates.hasVoted}" />
+                    </div>
+                  </div>
+                  <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">
+                      <h:outputText value="About Me" styleClass="name" style="margin-left: 3rem;" />
+                      <i class="material-icons right">close</i>
+                    </span>
+                    <h:outputText value="#{candidate.about}" /><br /><br />
+                    <h:outputText value="Manifesto" styleClass="name" /><br />
+                    <h:outputText value="#{candidate.manifesto}" /><br />
+                  </div>
+                </div>
+              </div>
+            </ui:repeat>
+          </h:form>
+        </div>
+      </div>
+    </section>
+
+    <h:form>
+      <p:dialog id="confirmationDialog" header="Confirm Your Vote" widgetVar="confirmationDialog" modal="true" showEffect="fade" hideEffect="fade" dynamic="true" closable="false" draggable="false">
+        <h:outputText value="Are you sure you want to vote for "/>
+        <strong><h:outputText value="#{candidates.candidateName}"/></strong>?
+        <br /><br />
+        <p:commandButton value="Confirm" action="#{transactionRequest.getTransactionRequest}" style="float: right;" styleClass="btnTeal"/>
+        <p:commandButton value="Cancel" style="float: right;" styleClass="ui-button-danger" onclick="confirmationDialog.hide();"/>
+      </p:dialog>
+    </h:form>
+
+    <script>
+      function redirectToIndex() {
+       window.location.href = 'index.xhtml';
+      }
+    </script>
+
+    <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; margin-bottom: 1rem;">
+      <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+    </div>
+
+    <ui:include src="/inc/footer.xhtml"/>
+  </h:body>
+</html>

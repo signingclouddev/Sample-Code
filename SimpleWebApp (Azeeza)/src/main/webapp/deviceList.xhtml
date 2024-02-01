@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        background-color: #FBEEC1;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .ui-user-role-icon {
+         width: 16px;
+         height: 16px;
+         align: up;
+         background-image: url(#{webapp['images:user-role.png']})!important;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
+        grid-gap: 10px; /* gap between grid items */
+        margin: 0;
+        padding: 0;
+      }
+
+      .grid-item i{
+        //
+      }
+
+      .input-field {
+        width: 70%; /* Adjust the width as needed */
+      }
+
+      footer {
+        text-align: center;
+      }
+    </style>
+    <h:outputStylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <h:outputStylesheet href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <h:outputScript src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Device List</title>
+</h:head>
+
+<h:body>
+    <ui:include src="include/topNavigation.xhtml" />
+    <f:event listener="#{manageDevice.getListOfUserDeviceApi}" type="preRenderComponent" />
+
+    <div class="container" style="display:flex;">
+        <p:panelGrid columns="1" style="width:45%; text-align:center">
+            <h:graphicImage value="/webapp/images/smartphone.png" style="max-width:50%"></h:graphicImage>
+        </p:panelGrid>
+
+        <p:panelGrid columns="1" style="width:55%">
+            <h:form name="manageDeviceForm" var="manageDevice" id="manageDeviceForm">
+                <h3 style="text-align:center;">Device List</h3>
+                <p:messages id="errorMessages" showDetail="true" autoUpdate="true" closable="true" />
+                 <div class="grid-item">
+                    <h:outputLabel value="Device Name" /><br></br>
+                    <p:inputText id="deviceName" readonly="true" value="#{manageDevice.deviceName}" styleClass="input-field" />
+                    <h:message for="deviceName"></h:message>
+                    <br></br><br></br>
+                 </div>
+                <div class="grid-item">
+                    <h:outputLabel value="Model" /><br></br>
+                    <p:inputText id="deviceModel" readonly="true" value="#{manageDevice.deviceModel}" styleClass="input-field" />
+                    <h:message for="deviceModel"></h:message>
+                    <br></br><br></br>
+                </div>
+                <div class="grid-item">
+                    <h:outputLabel value="Device Hid" /><br></br>
+                    <p:inputText id="deviceHid" readonly="true" value="#{manageDevice.deviceHid}" styleClass="input-field" />
+                    <h:message for="deviceHid"></h:message>
+                    <br></br><br></br>
+                </div>
+
+                <div class="button-container">
+                    <p:commandButton class="manageDeviceBtn" action="#{deviceRegistration.getTokenRegistrationOneTimePinApi}" value="Register" update="manageDeviceForm" ajax="true" styleClass="ui-button-primary" style="width:50%;" rendered="#{manageDevice.deviceHid == null}" />
+                    <p:spacer width="10" />
+                    <p:commandButton class="manageDeviceBtn" action="#{unregisterDevice.getUnregisterDeviceApi}" value="Unregister" update="manageDeviceForm" ajax="true" styleClass="ui-button-help" style="width:50%;" rendered="#{manageDevice.deviceHid != null}" />
+                    <p:spacer width="10" />
+                    <p:commandButton class="manageDeviceBtn" action="#{manageDevice.back}" value="Back" update="manageDeviceForm" ajax="true" styleClass="ui-button-secondary" style="width:50%;" />
+                </div>
+            </h:form>
+        </p:panelGrid>
+    </div>
+    <footer>
+        <ui:include src="include/footer.xhtml" />
+    </footer>
+
+    <script>
+    function redirectToDeviceList() {
+        window.location.href = "deviceList.xhtml";
+    }
+    </script>
+</h:body>
+</html>

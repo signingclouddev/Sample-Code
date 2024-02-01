@@ -1,0 +1,5 @@
+
+SimpleSigning/build/*
+SimpleSigning/dist/*
+SimpleSigning/build.xml
+SimpleSigning/nbproject/private/*

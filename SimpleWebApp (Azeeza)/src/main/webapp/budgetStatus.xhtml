@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        background-color: #FBEEC1;
+      }
+
+      .container {
+        position: relative;
+      }
+
+      .bordered-panel-pending {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #FEDC56;
+        width: 100%;
+        text-align: center;
+    }
+
+    .bordered-panel-approved {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #86DC3D;
+        width: 100%;
+        text-align: center;
+    }
+
+    .bordered-panel-rejected {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #FF6347;
+        width: 100%;
+        text-align: center;
+    }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .input-field {
+        width: 100%; /* Adjust the width as needed */
+      }
+
+      footer {
+        text-align: center;
+      }
+    </style>
+    <h:outputStylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <h:outputStylesheet href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <h:outputScript src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Budget Status</title>
+</h:head>
+
+<h:body>
+    <ui:include src="include/topNavigation.xhtml" />
+    <div class="container">
+        <p:panelGrid columns="1" layout="grid" class="text-align:center;">
+            <h3 style="text-align:center;">Budget Status</h3>
+        </p:panelGrid>
+        <p:panelGrid columns="3" layout="grid" class="text-align:center;">
+            <h:form name="statusPendingForm" var="statusPendingForm" id="statusPendingForm">
+                <h:panelGrid styleClass="bordered-panel-pending" style="margin:0 auto;">
+                    <p:link outcome="statusPending.xhtml">
+                        <h3 style="text-align:center; color:black;">Pending</h3>
+                        <h:graphicImage value="/webapp/images/pending.png" style="width:100px; height:100px;" />
+                        <h:outputText value="" />
+                    </p:link>
+                </h:panelGrid>
+            </h:form>
+
+            <h:form name="statusApprovedForm" var="statusApprovedForm" id="statusApprovedForm">
+                <h:panelGrid styleClass="bordered-panel-approved" style="margin:0 auto;">
+                    <p:link outcome="statusApproved.xhtml">
+                        <h3 style="text-align:center; color:black">Approved</h3>
+                        <h:graphicImage value="/webapp/images/approved.png" style="width:100px; height:100px;" />
+                        <h:outputText value="" />
+                    </p:link>
+                </h:panelGrid>
+            </h:form>
+
+            <h:form name="statusRejectedForm" var="statusRejectedForm" id="statusRejectedForm">
+                <h:panelGrid styleClass="bordered-panel-rejected" style="margin:0 auto;">
+                    <p:link outcome="statusRejected.xhtml">
+                        <h3 style="text-align:center; color:black">Rejected</h3>
+                        <h:graphicImage value="/webapp/images/rejected.png" style="width:100px; height:100px;" />
+                        <h:outputText value="" />
+                    </p:link>
+                </h:panelGrid>
+            </h:form>
+        </p:panelGrid>
+
+    </div>
+    <footer>
+        <ui:include src="include/footer.xhtml" />
+    </footer>
+</h:body>
+</html>

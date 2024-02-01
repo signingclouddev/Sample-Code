@@ -1,0 +1,224 @@
+<ui:composition template="/WEB-INF/templates/masterTemplate.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="title">Simple Home</ui:define>
+
+    <ui:define name="content">
+            
+          <div class="container-fluid">
+            <div class="row" style="overflow-x: hidden;">
+
+              <div class="col-8">
+                <div class="card shadow mx-3 my-4 px-3 py-5 bg-image text-center animate__animated animate__slideInLeft" style="background-color: #E3F2FD; border-radius: 25px; border: 0;">
+                  <h1 class="mt-3" style="/*color: #1E3A8A;*/ color: #013763;">Greetings, <b>#{result.username}</b>!</h1>
+                  <p style="/*color: #00658E;*/ color: #1565C0; font-size: 18px; margin-top: 10px;">Welcome to your personal homepage</p>
+                </div>
+              </div>
+  
+              <div class="col-4" style="margin-left: -10px;">
+                <div class="card shadow my-4 py-3 d-flex align-items-center justify-content-center bal-image animate__animated animate__slideInRight" style="background-color: #BBDEFB; border-radius: 25px; border: 0;">
+                  <div style="display: flex; align-items: center;">
+                    <img src="resources/images/wallet.png" style="width: 21px; height: 21px;"/>
+                    <p:spacer width="10" height="30"/>
+                    <p:outputLabel value="Balance" style="font-family: 'Roboto', sans-serif; font-size: 22px; color: #013763"/>
+                  </div>
+  
+                  <div style="margin-top: 15px; margin-bottom: 15px;">
+                    <p:outputLabel value="#{transaction.senderbalance}" style="font-family: 'Roboto', sans-serif; font-size: 41px; font-weight: bold;"/>  
+                  </div>
+  
+                  <div>
+                    <a href="transaction.xhtml?faces-redirect=true" style="width: 80%; text-align: center; border: 0;">
+                      <button type="button" class="btn btn-custom rounded-pill px-3 py-3">Make Transaction</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+
+            <div class="card shadow mx-3 px-4 py-4 sm-img animate__animated animate__slideInUp" style="border-radius: 25px; border: 0; margin-top: 10px; margin-bottom: 16px; background-color: #82B1FF;">
+              
+              <div>
+                  <p style="font-family: 'Roboto', sans-serif; font-weight: bold; font-size: 21px; color: #33691E; text-align: center;">User Available Authentication Method</p>
+              </div>
+              
+              <h:inputHidden id="getAuth" value="#{result.userBindAuth}"/>
+             
+              <div id="bindauth" style="display:none;">
+                <div class="row text-center mx-2 px-3 py-5" style="background-color: #E7f0f6; border-radius: 15px;">
+                  <div class="col" style="border-color:#000000; border-right: 2px;">
+                    <img src="resources/images/password.png" style="width: 45px; height: 45px;"/>
+                    <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">password</div>
+                  </div>
+                  <div class="col">
+                    <img src="resources/images/otp.png" style="width: 45px; height: 45px;"/>
+                    <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">OTP</div>
+                  </div>
+                  <div class="col">
+                    <img src="resources/images/notification.png" style="width: 45px; height: 45px;"/>
+                    <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">PUSH Notification</div>                    
+                  </div>
+                  <div class="col">
+                    <img src="resources/images/crotp.png" style="width: 45px; height: 45px;"/>
+                    <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">CROTP</div>                     
+                  </div>
+                  <div class="col">
+                    <img src="resources/images/qr.png" style="width: 45px; height: 45px;"/>
+                    <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">QR Code</div>                    
+                  </div>
+                </div>
+
+                <p style="font-family: 'Roboto', sans-serif; font-weight: bold; font-size: 21px; color: #D84315; margin-top: 10px; text-align: center;">Not Available Method</p>
+                <div class="text-center mx-2 px-3 py-4" style="background-color: #E7f0f6; border-radius: 15px;">
+                  <p class="py-auto" style="color: #1E3A8A; font-weight: bold; font-size: 18px; padding-top: 15px;">You have enabled all the required Authentication</p>
+                </div>
+            </div>
+
+            
+            <div id="bindnoauth" style="display: none;">
+              <div class="row text-center mx-auto my-auto px-3 py-4" style="background-color: #E7f0f6; border-radius: 15px; width: 60%; height: 60%;">
+                <div class="col" style="border-color:#000000; border-right: 2px;">
+                  <img src="resources/images/password.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">password</div>
+                </div>
+                <div class="col">
+                  <img src="resources/images/otp.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">OTP</div>
+                </div>
+                <div class="col">
+                  <img src="resources/images/notification.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">PUSH Notification</div>                    
+                </div>
+              </div>
+
+              <p style="font-family: 'Roboto', sans-serif; font-weight: bold; font-size: 21px; color: #D84315; margin-top: 10px; text-align: center;">Not Available Method</p>
+
+              <div class="row text-center mx-auto my-auto px-3 py-4" style="background-color: #E7f0f6; border-radius: 15px; width: 50%; height: 50%;">
+                <div class="col">
+                  <img src="resources/images/crotp.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">CROTP</div>                     
+                </div>
+                <div class="col">
+                  <img src="resources/images/qr.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">QR Code</div>                    
+                </div>
+              </div>
+
+              <div class="text-center mt-3">
+                <p style="font-size: 20px; color: #013763;">*To enabled all the method, Click the below button to go to Centagate Guideline</p> 
+                <p:commandButton class="ui-button-success rounded-pill px-2" style="color: #000000; font-weight: bold;" value="Click Me" action="#{result.bindUser('bindnoauth')}"/>
+              </div>
+            </div>
+            
+            <div id="nobindnoauth" style="display: none;">
+              <div class="row text-center mx-auto my-auto px-3 py-4" style="background-color: #E7f0f6; border-radius: 15px; width: 50%; height: 50%;">
+                <div class="col" style="border-color:#000000; border-right: 2px;">
+                  <img src="resources/images/password.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">Password</div>
+                </div>
+              </div>
+
+              <p style="font-family: 'Roboto', sans-serif; font-weight: bold; font-size: 21px; color: #D84315; margin-top: 10px; text-align: center;">Not Available Method</p>
+    
+              <div class="row text-center mx-auto my-auto px-3 py-4" style="background-color: #E7f0f6; border-radius: 15px; width: 50%; height: 50%;">
+                <div class="col">
+                  <img src="resources/images/otp.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">OTP</div>
+                </div>
+                <div class="col">
+                  <img src="resources/images/notification.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">PUSH Notification</div>                    
+                </div>
+                <div class="col">
+                  <img src="resources/images/crotp.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">CROTP</div>                     
+                </div>
+                <div class="col">
+                  <img src="resources/images/qr.png" style="width: 45px; height: 45px;"/>
+                  <div style="font-family: 'Roboto', sans-serif; color: #1565C0; font-weight: bold; padding-left: 10px;">QR Code</div>                    
+                </div>
+              </div>
+
+              <div class="text-center mt-4">
+                <p style="font-size: 20px; color: #013763;">You have not bind any devices yet. To use other authentication method, click the following button to bind your device</p>
+              
+                <p:commandButton class="ui-button-success rounded-pill px-3 py-2" style="color: #000000; font-weight: bold;" value="Bind Device" action="#{result.bindUser('nobindnoauth')}"/>
+                
+               
+              </div>
+            </div>
+
+            </div>
+          </div>
+          
+
+        <style>
+          h1, p {
+            font-family: 'Roboto', sans-serif;
+          }
+
+          .bg-image {
+            background-image: url("resources/images/usercard.jpg");
+            background-position: center;
+            background-size: cover;
+          }
+
+          .sm-img {
+            background-image: url("resources/images/authmethod.jpg");
+            background-position: center;
+            background-size: cover;
+          }
+
+          .bal-image {
+            background-image: url("resources/images/balance.jpg");
+            background-position: center;
+            background-size: cover;
+          }
+
+          a {
+            text-decoration: none;
+            color: #000000;
+          }
+
+          .btn-custom {
+            font-family: 'Roboto', sans-serif;
+            background-color: #29B6F6;
+            color: #01579B;
+          }
+
+          .btn-custom:hover {
+            background-color: #0288D1;
+          }
+
+          .col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .animate__animated.animate__slideInUp, .animate__animated.animate__slideInLeft, .animate__animated.animate__slideInRight {
+            animation-duration: 0.5s;
+          }
+        </style>
+
+        <script>
+          let authMethod = document.getElementById("getAuth").value;
+
+          if(authMethod == 0) {
+            document.getElementById("bindauth").style.display = "block";
+          }else if(authMethod == 1) {
+            document.getElementById("nobindnoauth").style.display = "block";
+          }else {
+            document.getElementById("bindnoauth").style.display = "block";
+          }
+        </script>
+    </ui:define>
+</ui:composition>
+
+

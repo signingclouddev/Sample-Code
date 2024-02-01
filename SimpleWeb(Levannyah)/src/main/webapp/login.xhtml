@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <title>Simple App | Login</title>
+    <ui:include src="/inc/header.xhtml"/>
+  </h:head>
+
+  <h:body styleClass="cyan lighten-5">
+    <section class="section login-section center-align">
+      <div class="container">
+        <p:graphicImage value="webapp/resources/img/logo.svg" width="40%" alt="Simple App"/>
+
+        <p:card style="border-radius: 10px;">
+          <div class="row">
+            <div class="col s12 m6">
+              <p:graphicImage value="webapp/resources/img/login.png" width="100%" alt="Login"/>
+            </div>
+
+            <div class="col s12 m5" style="margin-top: 4rem;">
+              <h:form id="loginForm" method="POST">
+                <p:growl id="messages" autoUpdate="true"/>
+                <div class="input-field">
+                  <h:inputText id="username" required="true" requiredMessage="Username is required" value="#{adaptive.username}" autocomplete="off"/>
+                  <h:outputLabel for="username" value="Username"/>
+                </div>
+
+                <p:commandButton value="Login" action="#{adaptive.adaptiveAuth}" update="messages" style="background-color: teal; border-color: teal; width: 100%;"/>
+              </h:form>
+            </div>
+          </div>
+        </p:card>
+      </div>
+    </section>
+
+    <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; position: fixed; bottom: 1rem; left: 0; right: 0;">
+      <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+    </div>
+
+    <ui:include src="/inc/footer.xhtml"/>
+  </h:body>
+</html>

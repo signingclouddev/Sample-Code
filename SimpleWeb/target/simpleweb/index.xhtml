@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Simple Login</title>
+        
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+        <script src="https://kit.fontawesome.com/9320327796.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <h:outputScript library="js" name="qrcode.js"/> 
+    </h:head>
+    
+    <h:body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-7" style="background-color: #B3E5FC; background-size: cover; height: 100vh; padding: 0;">
+                    
+                    <div id="icon" class="mx-3 my-3" onclick="alert('Hello');">
+                        <img src="resources/images/simplelogo.png" alt="icon" style="width:32px; height:32px; margin-top: -5px;"/>
+                        <span style="font-family: 'Montserrat', sans-serif; font-size: 21px; font-weight: bold;">SimpleWeb</span>
+                    </div>
+
+                    <div class="text-center">
+                        <img class="mx-auto img-fluid" src="resources/images/log-in.png"/>
+                    </div>
+                
+                </div>
+
+                <div class="col-5 mx-auto my-auto">
+                    <div class="mx-3 my-3" style="text-align: left;">
+                        <h1><b>Login</b></h1>
+                        <p>Login as a user, with your Email Address.</p>
+                    </div>
+
+                    <h:form>
+                        <p:growl id="growl" showDetail="true" />
+                                  
+                        <div>
+                            <span id="email" class="mt-5 mx-3 ui-float-label">
+                                <p:inputText id="float-input" class="rounded-pill" value="#{login.email}" autocomplete="off" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please enter a valid Email!" validatorMessage="Invalid Email Address!">
+                                    <f:validateRegex pattern ="^(.+)@(.+)$"/>
+                                </p:inputText>
+        
+                                <h:message for="email" errorClass="invalid"/>
+        
+                                <p:outputLabel for="@previous" value="Email Address" style="text-align: center;"/>
+                            </span>
+                        </div>
+
+                        <div class="row mt-5 mx-3">  
+                            <h:commandButton value="Submit" disableOnAjax="false" action="#{login.checkUserExisted()}" class="rounded-pill py-3 px-3" style="font-size: 20px; font-family: Roboto; font-weight: bold; background-color: #039BE5;" update="growl"/>
+                        </div>
+
+                    </h:form>
+
+                    <div>
+                        <div class="col d-flex justify-content-center mt-5">
+                            <p style="font-size: 19px;">Not a user? Register&nbsp;</p>
+                            <p:commandLink style="font-family: 'Roboto', sans-serif; font-size: 19px;" value="here" immediate="true" action="/register.xhtml?faces-redirect=true"/>
+                        </div>
+                    </div>
+
+                    <p:dialog header="Choose Authentication Method" widgetVar="bindnoauth" minHeight="50" width="400" showEffect="fade" modal="true">
+                        <div class="row text-center">
+                            <div class="col-sm">
+                                <p:commandButton id="passButton" icon="pi pi-ellipsis-h" styleClass="rounded-button ui-button-info my-button" onclick="passwordDialog('bindnoauth')"/>
+                                <div class="mt-2">
+                                    <b>Password</b>
+                                </div>
+                            </div>
+
+                            <div class="col-sm">
+                                <p:commandButton id="otpButton" icon="pi pi-phone" styleClass="rounded-button ui-button-info my-button" onclick="otpDialog('bindnoauth')"/>
+                                <div class="mt-2">
+                                    <b>OTP</b>
+                                </div>
+                            </div>
+
+                            <div class="col-sm">
+                                <h:form>
+                                    <p:commandButton id="pushsButton" icon="pi pi-send" styleClass="rounded-button ui-button-info my-button" action="#{login.login('push')}" oncomplete="PF('bindnoauth').hide();" update="growls"/>
+                                    <p:growl id="growls" showDetail="true"/>
+                                </h:form>
+                                <div class="mt-2">
+                                    <b>PUSH Notification</b>
+                                </div>
+                            </div>
+                        </div>
+                    </p:dialog>
+
+                    <p:dialog header="Choose Authentication Method" widgetVar="bindauth" minHeight="50" width="500" showEffect="fade" modal="true">
+                        <div class="row text-center">
+                            <div class="col-sm">
+                                <p:commandButton id="passwordsButton" icon="pi pi-ellipsis-h" styleClass="rounded-button ui-button-info my-button" onclick="passwordDialog('bindauth')"/>
+                                <div class="mt-2">
+                                    <b>Password</b>
+                                </div>
+                            </div>
+
+                            <div class="col-sm">
+                                <p:commandButton id="otpsButton" icon="pi pi-phone" styleClass="rounded-button ui-button-info my-button" onclick="otpDialog('bindauth')"/>
+                                <div class="mt-2">
+                                    <b>OTP</b>
+                                </div>
+                            </div>
+
+                            <div class="col-sm">
+                                <h:form>
+                                    <p:commandButton id="pushsButton" icon="pi pi-send" styleClass="rounded-button ui-button-info my-button" action="#{login.login('push')}" oncomplete="PF('bindauth').hide();" update="growls"/>
+                                    <p:growl id="growls" showDetail="true"/>
+                                </h:form>
+                                <div class="mt-2">
+                                    <b>PUSH Notification</b>
+                                </div>
+                            </div>
+
+            
+                            <div class="col-sm">
+                                <p:commandButton id="crotpButton" icon="pi pi-sync" styleClass="rounded-button ui-button-info my-button" onclick="crotpDialog()"/>
+                                <div class="mt-2">
+                                    <b>CROTP</b>
+                                </div>
+                            </div>
+
+                            <div class="col-sm">
+                                <p:commandButton id="qrButton" icon="pi pi-qrcode" styleClass="rounded-button ui-button-info my-button" action="#{login.login('qr')}" oncomplete="PF('bindauth').hide();" update="growlss"/>
+                                <p:growl id="growlss" showDetail="true"/>
+                                <div class="mt-2">
+                                    <b>QR</b>
+                                </div>
+                            </div>
+                        </div>
+                    </p:dialog>
+
+                    <!--Below Section is the dialog for each authentication login method-->
+
+                    <p:dialog header="Login" widgetVar="password" minHeight="100" width="400" showEffect="fade" modal="true" onHide="handleDialogHide()">
+                        <h:form>
+                            <p:growl id="logingrowl" showDetail="true"/>
+
+                            <div class="row">
+                                <p:outputLabel for="passwordInput" styleClass="block" indicateRequired="false" style="font-weight: bold;">Password</p:outputLabel>
+                                <p:password id="passwordInput" class="rounded-pill" value="#{login.password}" autocomplete="off" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please Enter a Password!" style="text-align:center;"/>
+                            </div>
+                            <div class="text-center pt-3">
+                                <p:commandButton id="passwordSubmit" disableOnAjax="false" class="rounded-pill px-3 py-2" value="Submit" action="#{login.login('password')}" update="logingrowl"/>
+                            </div>
+                        </h:form>
+                    </p:dialog>
+
+                    <p:dialog header="Enter the OTP show in Centagate App" widgetVar="otp" minHeight="100" width="500" showEffect="fade" modal="true" onHide="handleDialogHide()">
+                        <h:form>
+                            <p:growl id="otpgrowl" showDetail="true"/>
+
+                            <div class="row">
+                                <p:outputLabel for="otpInput" styleClass="block" indicateRequired="false" style="font-weight: bold;">OTP</p:outputLabel>
+                                <p:inputText id="otpInput" class="rounded-pill" value="#{login.otp}" autocomplete="off" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please Enter an OTP!" validatorMessage="OTP only contain 6 digits" style="text-align:center;">
+                                    <f:validateRegex pattern="\d{6}" />
+                                </p:inputText>
+                            </div>
+                            <div class="text-center pt-3">
+                                <p:commandButton disableOnAjax="false" class="rounded-pill px-2 py-2" value="Submit" action="#{login.login('otp')}" update="otpgrowl"/>
+                            </div>
+                        </h:form>
+                    </p:dialog>
+
+                    <p:dialog header="CROTP" widgetVar="crotp" minHeight="100" width="500" showEffect="fade" modal="true" onHide="handleDialogHide()">
+                        
+                        <p style="font-size: 19px;">Please enter the following code in the Centagate App <b>CROTP</b> Section:</p>
+
+                        <div class="rounded-pill text-center p-3 mb-3 mx-auto my-auto" style="width: 50%; height: 50%; background-color: #B3E5FC;">
+                            <p:commandButton id="getChallengeButton" value="call function" style="display:none;" action="#{login.getOTPChallenge()}" update="challengeOutput"/>
+                            <h:outputText id="challengeOutput" value="#{login.challenge}" style="font-weight: bold; font-size: 26px;"/>    
+                        </div>    
+
+                        <h:form>
+                            <p:growl id="crotpgrowl" showDetail="true"/>
+
+                            <div class="row">
+                                <p:outputLabel for="crotpInput" styleClass="block" indicateRequired="false" style="font-weight: bold;">OTP</p:outputLabel>
+                                <p:inputText id="crotpInput" class="rounded-pill" value="#{login.crotp}" autocomplete="off" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please Enter a CROTP!" validatorMessage="OTP only contain 6 digits" style="text-align:center;">
+                                    <f:validateRegex pattern="\d{6}" />
+                                </p:inputText>
+                            </div>
+                            <div class="text-center pt-3">
+                                <p:commandButton disableOnAjax="false" class="rounded-pill px-3 py-2" value="Submit" action="#{login.login('crotp')}" update="crotpgrowl"/>
+                            </div>
+                        </h:form>
+                    </p:dialog>
+                    
+                </div>
+            </div>
+        </div>    
+        
+        <style>
+            .email {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 21px;
+                font-weight: bold;
+            }
+
+            h1, h5, p, .ui-dialog, .ui-dialog-title, b, span {
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .card-body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .my-button {
+                padding: 24px;
+            }
+
+            .ui-dialog {
+                background-color: #B3E5FC !important;
+            }
+        </style>
+
+        <h:outputScript>
+            var method = 0;
+
+            function setMethod(choice) {
+                method = choice;
+            }
+
+            function passwordDialog(choice) {
+                if(choice === 'bindnoauth') {
+                    PF('bindnoauth').hide();
+                    setMethod(1);
+                }else {
+                    PF('bindauth').hide();
+                    setMethod(2);
+                }
+
+                PF('password').show();
+            }
+
+            function otpDialog(choice) {
+                if(choice === 'bindnoauth') {
+                    PF('bindnoauth').hide();
+                    setMethod(1);
+                }else {
+                    PF('bindauth').hide();
+                    setMethod(2);
+                }
+
+                PF('otp').show();
+            }
+
+            function crotpDialog() {
+                PF('bindauth').hide();
+                setMethod(2);
+                PF('crotp').show();
+                document.getElementById('getChallengeButton').click();
+            }
+
+            function handleDialogHide() {
+                if(method === 1) {
+                    PF('bindnoauth').show();
+                }else if(method === 2) {
+                    PF('bindauth').show();
+                }
+            }
+        </h:outputScript>
+    </h:body>
+    
+</html>

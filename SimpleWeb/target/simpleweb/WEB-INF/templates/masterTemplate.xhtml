@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets" 
+>
+    <h:head>
+        <title>
+            <ui:insert name="title">Some title</ui:insert>
+        </title>
+
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Bebas+Neue' rel='stylesheet' type='text/css'/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </h:head>
+
+    <h:body style="background-color: #E7f0f6;">
+        <ui:include src="header.xhtml"/>
+
+        <ui:insert name="content" />
+    
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+    
+    <style>
+        .h:body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    </style>
+</html>

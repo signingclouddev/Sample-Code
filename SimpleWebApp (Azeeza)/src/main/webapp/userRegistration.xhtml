@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {User
+        background-color: #FBEEC1;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .ui-user-role-icon {
+         width: 16px;
+         height: 16px;
+         align: up;
+         background-image: url(#{webapp['images:user-role.png']})!important;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
+        grid-gap: 10px; /* gap between grid items */
+        margin: 0;
+        padding: 0;
+      }
+
+      .grid-item {
+        //
+      }
+
+      .input-field {
+        width: 95%; /* Adjust the width as needed */
+      }
+
+      .spinner-dialog {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 9999;
+          padding: 20px;
+          border-radius: 8px;
+          //box-shadow: none;
+      }
+
+      footer {
+        text-align: center;
+      }
+    </style>
+    <h:outputStylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <h:outputStylesheet href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <h:outputScript src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Add New User</title>
+</h:head>
+
+<h:body>
+    <ui:include src="include/topNavigation.xhtml" />
+    <div class="container" style="display:flex;">
+        <p:panelGrid columns="1" style="width:45%; text-align:center">
+            <h:graphicImage value="/webapp/images/add-new-user.png" style="max-width:50%"></h:graphicImage>
+        </p:panelGrid>
+
+        <p:panelGrid columns="1" style="width:55%">
+            <h:form name="registerForm" var="register" id="registerForm">
+                <h3 style="text-align:center;">Add New User</h3>
+                <p:messages id="errorMessages" showDetail="true" autoUpdate="true" closable="true" />
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <i class="pi pi-user" />
+                        <p:inputText id="firstName" placeholder="First Name" value="#{userRegistration.firstName}" styleClass="input-field" />
+                        <h:message for="firstName"></h:message>
+                        <br></br><br></br>
+                    </div>
+                    <div class="grid-item">
+                        <i class="pi pi-user" />
+                        <p:inputText id="lastName" placeholder="Last Name" value="#{userRegistration.lastName}" styleClass="input-field" />
+                        <h:message for="lastName"></h:message>
+                        <br></br><br></br>
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <i class="pi pi-user" />
+                        <p:inputText id="newUsername" placeholder="Username" value="#{userRegistration.newUsername}" styleClass="input-field" />
+                        <h:message for="newUsername"></h:message>
+                        <br></br><br></br>
+                    </div>
+                    <div class="grid-item">
+                        <i class="pi pi-envelope" />
+                        <p:inputText id="userEmail" placeholder="Email" value="#{userRegistration.userEmail}" styleClass="input-field" />
+                        <h:message for="userEmail"></h:message>
+                        <br></br><br></br>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <i class="fi fi-rs-user-gear" />
+                    <p:spacer width="5" />
+                    <p:selectOneMenu id="roles" value="#{userRegistration.roles}" styleClass="input-field">
+                        <f:selectItem itemLabel="Select a User Role" itemDisabled="true" />
+<!--                        <f:selectItem itemLabel="Company Admin" itemValue="2" />-->
+                        <f:selectItem itemLabel="User/Employee" itemValue="3" />
+                    </p:selectOneMenu>
+                    <h:message for="roles"></h:message>
+                    <br></br><br></br>
+                </div>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <i class="pi pi-users" />
+                        <p:inputText id="userGroup" placeholder="Group Name" value="#{userRegistration.userGroup}" styleClass="input-field" />
+                        <h:message for="userGroup"></h:message>
+                        <br></br><br></br>
+                    </div>
+                    <div class="grid-item">
+                        <i class="pi pi-key" />
+                        <p:inputText id="userUniqueId" placeholder="Unique ID" value="#{userRegistration.userUniqueId}" styleClass="input-field" />
+                        <h:message for="userUniqueId"></h:message>
+                        <br></br><br></br>
+                    </div>
+                </div>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <i class="pi pi-key" />
+                        <p:inputText id="userClientId" placeholder="Client ID" value="#{userRegistration.userClientId}" styleClass="input-field" />
+                        <h:message for="userClientId"></h:message>
+                        <br></br><br></br>
+                    </div>
+                    <div class="grid-item">
+                        <i class="pi pi-key" />
+                        <p:inputText id="userApp" placeholder="Application ID" value="#{userRegistration.userApp}" styleClass="input-field" />
+                        <h:message for="userApp"></h:message>
+                        <br></br><br></br>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <p:commandButton class="registerBtn" action="#{userRegistration.getUserRegistrationApi}" value="Add" update="registerForm" ajax="true" styleClass="ui-button-primary" style="width:50%;" onclick="showSpinner()" oncomplete="hideSpinner()">
+                        <p:confirm header="Confirmation" message="Are you sure you want to create a new user?" icon="pi pi-exclamation-triangle" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                        <p:commandButton value="No" action="#{userRegistration.no}" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    </p:confirmDialog>
+
+                    <p:spacer width="10" />
+                    <p:commandButton class="registerBtn" action="#{userRegistration.clear}" value="Clear" update="registerForm" ajax="true" styleClass="ui-button-help" style="width:50%;" />
+                    <p:spacer width="10" />
+                    <p:commandButton class="registerBtn" action="#{userRegistration.back}" value="Cancel" update="registerForm" ajax="true" styleClass="ui-button-secondary" style="width:50%;" />
+                </div>
+            </h:form>
+        </p:panelGrid>
+    </div>
+    <footer>
+        <ui:include src="include/footer.xhtml" />
+    </footer>
+
+
+    <p:dialog id="spinnerContainer" modal="true" styleClass="spinner-dialog" style="display: none;" draggable="false" closable="false" resizable="false" showHeader="false">
+        <i class="pi pi-spin pi-spinner" style="font-size: 3em;"></i>
+    </p:dialog>
+
+
+    <script>
+        function showSpinner() {
+        $('#spinnerContainer').show();
+        }
+
+        function hideSpinner() {
+        $('#spinnerContainer').hide();
+        }
+    </script>
+
+</h:body>
+</html>

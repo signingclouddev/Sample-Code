@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        background-color: #FBEEC1;
+      }
+
+      .container {
+        position: relative;
+      }
+
+      .input-field {
+        width: 100%; /* Adjust the width as needed */
+      }
+
+      footer {
+        text-align: center;
+      }
+    </style>
+    <h:outputStylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <h:outputStylesheet href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <h:outputScript src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Pending Budget</title>
+</h:head>
+
+<h:body>
+    <ui:include src="include/topNavigation.xhtml" />
+    <div class="container">
+        <p:panelGrid columns="1" layout="grid" class="text-align:center;">
+            <h3>Pending Budget List</h3>
+            <p:dataTable id="pendingTable" var="displayData" value="${displayPending.display()}" selection="#{displayPending.pendingStatus}" >
+                <p:column headerText="ID" width="20px">
+                    <h:outputText value="${displayData.budget_id}" />
+                </p:column>
+                <p:column headerText="Budget Type">
+                    <h:outputText value ="${displayData.budget_type}" />
+                </p:column>
+                <p:column headerText="Date">
+                    <h:outputText value ="${displayData.budget_date}" />
+                </p:column>
+                <p:column headerText="Amount (RM)">
+                    <h:outputText value ="${displayData.budget_amount}" />
+                </p:column>
+                <p:column headerText="Status">
+                    <p:outputLabel id="budget_status" value="${displayData.budget_status}" />
+                </p:column>
+                <p:column headerText="Actions" style="justify-content:center">
+                    <p:commandButton icon="pi pi-check" value="Approve" styleClass="rounded-button ui-button-success" action="#{approveBudget.getRequestTransactionSigningMobilePushCRApi}" ajax="true" update="pendingTable">
+                        <p:confirm header="Confirmation" message="Are you sure you want to change the budget status to Approved?" icon="pi pi-exclamation-triangle" />
+                    </p:commandButton>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                        <p:commandButton value="No" action="#{displayPending.no}" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    </p:confirmDialog>
+                    <br></br><p:spacer width="10"/><br></br>
+
+                    <p:commandButton icon="pi pi-times" value="Reject" styleClass="rounded-button ui-button-danger" action="#{rejectBudget.getRequestTransactionSigningMobilePushCRApi}" ajax="true" update="pendingTable">
+                        <p:confirm header="Confirmation" message="Are you sure you want to change the budget status to Rejected?" icon="pi pi-exclamation-triangle" />
+                    </p:commandButton>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                        <p:commandButton value="No" action="#{displayPending.no}" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    </p:confirmDialog>
+                    <br></br><p:spacer width="10"/><br></br>
+                    <h:panelGroup>
+                        <p:commandButton icon="pi pi-search" value="View" action="#{displayPending.selectedBudget(displayData.employee_id, displayData.budget_id)}" ajax="true" styleClass="rounded-button ui-button-help" oncomplete="PF('viewDetailsDialog').show()">
+                            <f:setPropertyActionListener target="#{displayPending.selectedEmployeeId}" value="#{displayData.employee_id}" />
+                            <f:setPropertyActionListener target="#{displayPending.selectedBudgetId}" value="#{displayData.budget_id}" />
+                        </p:commandButton>
+                    </h:panelGroup>
+                </p:column>
+            </p:dataTable>
+        </p:panelGrid>
+
+        <p:dialog header="Budget Details" widgetVar="viewDetailsDialog" modal="true" dynamic="true" closable="true" visible="false" width="500" height="500" styleClass="dialog-position" onHide="redirectToDisplayStatusPending()">
+            <!--            <f:event listener="#{displayDetails.displayDataDetails()}" type="preRenderComponent" />-->
+            <p:accordionPanel multiple="true" widgetVar="multiple">
+                <p:tab title="Employee Details" styleClass="tab-title">
+                    <h4>Employee Details</h4>
+                    <div class="grid-container">
+                        <div class="grid-item">
+                            <h:outputLabel value="First Name" /><br></br>
+                            <p:inputText id="firstName" readonly="true" value="#{displayDetails.displayData.employee_fname}" styleClass="input-field" />
+                            <h:message for="firstName"></h:message>
+                            <br></br><br></br>
+                        </div>
+                        <div class="grid-item">
+                            <h:outputLabel value="Last Name" /><br></br>
+                            <p:inputText id="lastName" readonly="true" value="#{displayDetails.displayData.employee_lname}" styleClass="input-field" />
+                            <h:message for="lastName"></h:message>
+                            <br></br><br></br>
+                        </div>
+                        <div class="grid-item">
+                            <h:outputLabel value="Username" /><br></br>
+                            <p:inputText id="username" readonly="true" value="#{displayDetails.displayData.employee_username}" styleClass="input-field" />
+                            <h:message for="username"></h:message>
+                            <br></br><br></br>
+                        </div>
+                        <div class="grid-item">
+                            <h:outputLabel value="Email" /><br></br>
+                            <p:inputText id="userEmail" readonly="true" value="#{displayDetails.displayData.employee_email}" styleClass="input-field" />
+                            <h:message for="userEmail"></h:message>
+                            <br></br><br></br>
+                        </div>
+                        <div class="grid-item">
+                            <h:outputLabel value="Group" /><br></br>
+                            <p:inputText id="userGroup" readonly="true" value="#{displayDetails.displayData.employee_group}" styleClass="input-field" />
+                            <h:message for="userGroup"></h:message>
+                            <br></br><br></br>
+                        </div>
+                    </div>
+                </p:tab>
+                <p:tab title="Budget Details" styleClass="tab-title">
+                    <h4>Budget Details</h4>
+                    <div class="grid-container">
+                        <div class="grid-item">
+                            <h:outputLabel value="Budget Type" /><br></br>
+                            <p:inputText id="budgetType" readonly="true" value="#{displayDetails.displayData.budget_type}" styleClass="input-field" />
+                            <h:message for="budgetType"></h:message>
+                            <br></br><br></br>
+                        </div>
+                        <div class="grid-item">
+                            <h:outputLabel value="Date" /><br></br>
+                            <p:inputText id="budgetDate" readonly="true" value="#{displayDetails.displayData.budget_date}" styleClass="input-field" />
+                            <h:message for="budgetDate"></h:message>
+                            <br></br><br></br>
+                        </div>
+                        <div class="grid-item">
+                            <h:outputLabel value="Amount (RM)" /><br></br>
+                            <p:inputText id="budgetAmount" readonly="true" value="#{displayDetails.displayData.budget_amount}" styleClass="input-field" />
+                            <h:message for="budgetAmount"></h:message>
+                            <br></br><br></br>
+                        </div>
+                        <div class="grid-item">
+                            <h:outputLabel value="Remarks" /><br></br>
+                            <p:inputText id="budgetRemarks" readonly="true" placeholder="No Remarks" value="#{displayDetails.displayData.budget_remarks}" styleClass="input-field" />
+                            <h:message for="budgetRemarks"></h:message>
+                            <br></br><br></br>
+                        </div>
+                        <div class="grid-item">
+                            <h:outputLabel value="Status" /><br></br>
+                            <p:inputText id="budgetStatus" readonly="true" value="#{displayDetails.displayData.budget_status}" styleClass="input-field" />
+                            <h:message for="budgetStatus"></h:message>
+                            <br></br><br></br>
+                        </div>
+                    </div>
+                </p:tab>
+            </p:accordionPanel>
+        </p:dialog>
+
+    </div>
+    <footer>
+        <ui:include src="include/footer.xhtml" />
+    </footer>
+
+    <script>
+    function redirectToDisplayStatusPending() {
+        window.location.href = "statusPending.xhtml";
+    }
+    </script>
+</h:body>
+</html>

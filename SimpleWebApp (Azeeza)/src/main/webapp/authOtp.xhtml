@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        background: linear-gradient(to right, #999966 0%, #ff9999 100%);
+      }
+
+      .button.ui-button {
+        margin-right: .5rem;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+      }
+      .card {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         box-shadow: 2px 2px 5px grey;
+      }
+</style>
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>OTP Authentication</title>
+</h:head>
+
+<h:body>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <p:graphicImage value="/webapp/images/simple-web-app-logo.png" style="width: 250px; height: 100px;"></p:graphicImage>
+    </div>
+    <div class="card">
+        <h:form name="otpAuthForm" var="authOtp" id="otpAuthForm">
+            <!--<p:dialog header="CR OTP Dialog" id="crOtpDialog" widgetVar="dlg" modal="true" appendTo="@(body)">-->
+            <p:panel name="authOtpPanel" id="authOtpPanel" style="background: white;">
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <h:graphicImage value="/webapp/images/otp.png" style="width: 100px; height: 100px;"></h:graphicImage>
+                </div>
+                <h3 style="text-align:center;">OTP Authentication</h3>
+                <p:messages id="errorMessages" showDetail="true" autoUpdate="true" closable="true" />
+                <p style="text-align:center">Hello, <strong><h:outputText value="#{authOtp.username}."/></strong></p>
+
+                <i class="pi pi-lock" />
+                <p:inputText id="otp" placeholder="OTP Code" value="#{authOtp.otp}" />
+                <h:message for="otp"></h:message>
+                <br></br><br></br>
+
+                <div class="button-container">
+                    <p:commandButton class="authOtpBtn" action="#{authOtp.getOtpAuthApi}" value="Login" update="otpAuthForm" ajax="true" styleClass="ui-button-primary" style="width:50%" />
+                    <p:spacer width="10" />
+                    <p:commandButton class="authOtpBtn" action="#{prelogin.back}" value="Cancel" update="otpAuthForm" ajax="true" styleClass="ui-button-secondary" style="width:50%;" />
+                </div>
+                <!--</h:panelGrid>-->
+            </p:panel>
+        </h:form>
+    </div>
+</h:body>
+</html>

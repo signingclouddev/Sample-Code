@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <title>Simple App | Register Device</title>
+    <ui:include src="/inc/header.xhtml"/>
+    <style>
+      #qrCodeContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    </style>
+  </h:head>
+
+  <h:body styleClass="cyan lighten-5">
+    <h:form>
+      <p:growl id="growl" showDetail="true">
+        <p:autoUpdate/>
+      </p:growl>
+
+      <p:dialog id="bindDialog" header="Register a Device" widgetVar="bindDialog" global="true" showEffect="fade" hideEffect="fade" responsive="true" closable="false" visible="true">
+        <h:outputText value="Please follow the instructions below to register your device."/><br/>
+        <h:outputText value="1. Download the Centagate mobile app from the Play Store or the App Store."/><br/>
+        <h:outputText value="2. Scan the QR Code below."/><br/>
+        <div class="input-field" style="margin-top: 2em; margin-bottom: 2em;">
+          <div id="qrCodeContainer">
+            <div id="qrCode"></div>
+          </div>
+          <input type="hidden" id="qrCodeString" value="#{tokenRegistration.qrCode}"/>
+        </div>
+        <h:outputText value="3. Input this provisioning code. "/>
+        <strong><h:outputText value="Code: #{tokenRegistration.passcode}"/></strong><br/><br/>
+
+        <p:poll widgetVar="pollWidget" interval="5" listener="#{checkDevice.checkDeviceList}"/>
+      </p:dialog>
+    </h:form>
+
+    <script type="text/javascript">
+       document.addEventListener('DOMContentLoaded', function() {
+         showQrCode();
+       });
+
+       function showQrCode() {
+          var qrCodeString = document.getElementById("qrCodeString").value;
+
+          var qrCode = new QRCode(document.getElementById("qrCode"), {
+              text: qrCodeString,
+              width: 200,
+              height: 200,
+              colorDark: "#000000",
+              colorLight: "#ffffff",
+              correctLevel: QRCode.CorrectLevel.H
+          });
+        }
+
+       function redirectToLogin() {
+          window.location.href = 'login.xhtml';
+       }
+      </script>
+
+    <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; position: fixed; bottom: 1rem; left: 0; right: 0;">
+      <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+    </div>
+
+    <ui:include src="/inc/footer.xhtml"/>
+  </h:body>
+</html>

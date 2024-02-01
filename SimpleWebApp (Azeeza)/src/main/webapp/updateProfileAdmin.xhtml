@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        background-color: #FBEEC1;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .ui-user-role-icon {
+         width: 16px;
+         height: 16px;
+         align: up;
+         background-image: url(#{webapp['images:user-role.png']})!important;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
+        grid-gap: 10px; /* gap between grid items */
+        margin: 0;
+        padding: 0;
+      }
+
+      .grid-item i{
+        //
+      }
+
+      .input-field {
+        width: 70%; /* Adjust the width as needed */
+      }
+
+      #editFirstName {
+         display: none; /* Hide by default */
+      }
+
+      footer {
+        text-align: center;
+      }
+    </style>
+    <h:outputStylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <h:outputStylesheet href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <h:outputScript src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Update Profile</title>
+</h:head>
+
+<h:body>
+    <ui:include src="include/topNavigation.xhtml" />
+    <f:event listener="#{updateProfileAdmin.displayProfileAdmin}" type="preRenderComponent" />
+
+    <div class="container" style="display:flex;">
+        <p:panelGrid columns="1" style="width:45%; text-align:center">
+            <h:graphicImage value="/webapp/images/edit-profile1.png" style="max-width:70%"></h:graphicImage>
+        </p:panelGrid>
+
+        <p:panelGrid columns="1" style="width:55%">
+            <h:form name="updateProfileForm" var="updateProfile" id="updateProfileForm">
+                <h3 style="text-align:center;">Update Profile</h3>
+                <p:messages id="errorMessages" showDetail="true" autoUpdate="true" closable="true" />
+
+                <div class="grid-container" style="display:none;">
+                    <div class="grid-item">
+                        <i class="pi pi-user" />
+                        <p:inputText id="employeeId" placeholder="Admin ID" value="#{updateProfileAdmin.employeeId}" styleClass="input-field" readonly="true" />
+                        <h:message for="employeeId"></h:message>
+                        <br></br><br></br>
+                    </div>
+                    <div class="grid-item">
+                        <i class="pi pi-user" />
+                        <p:inputText id="adminUsername" placeholder="Admin Username" value="#{updateProfileAdmin.adminUsername}" styleClass="input-field" readonly="true" />
+                        <h:message for="adminUsername"></h:message>
+                        <br></br><br></br>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+<!--                    <i class="pi pi-user" />-->
+                    <h:outputLabel value="Username" /> <p:spacer width="10" />
+                    <p:inputText id="username" placeholder="Username" value="#{updateProfileAdmin.username}" style="width:86%" disabled="true" />
+                    <h:message for="username"></h:message>
+                    <br></br><br></br>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item">
+<!--                        <i class="pi pi-user" />-->
+                        <h:outputLabel value="First Name" /> <p:spacer width="10" />
+                        <p:inputText id="editFirstName" placeholder="First Name" value="#{updateProfileAdmin.firstName}" styleClass="input-field" />
+                        <h:message for="editFirstName"></h:message>
+                        <br></br><br></br>
+                    </div>
+                    <div class="grid-item">
+<!--                        <i class="pi pi-user" />-->
+                        <h:outputLabel value="Last Name" /> <p:spacer width="10" />
+                        <p:inputText id="editLastName" placeholder="Last Name" value="#{updateProfileAdmin.lastName}" styleClass="input-field" />
+                        <h:message for="editLastName"></h:message>
+                        <br></br><br></br>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+<!--                    <i class="pi pi-envelope" />-->
+                    <h:outputLabel value="Email" /> <p:spacer width="10" />
+                    <p:inputText id="editUserEmail" placeholder="Email" value="#{updateProfileAdmin.userEmail}" style="width:91%" />
+                    <h:message for="editUserEmail"></h:message>
+                    <br></br><br></br>
+                </div>
+
+                <div class="button-container">
+                    <p:commandButton class="updateProfileBtn" action="#{updateProfileAdmin.getUpdateUserProfileApi}" value="Save" update="updateProfileForm" ajax="true" styleClass="ui-button-primary" style="width:50%;">
+                        <p:confirm header="Confirmation" message="Are you sure you want to change your profile details?" icon="pi pi-exclamation-triangle" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                        <p:commandButton value="No" action="#{updateProfileAdmin.no}" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    </p:confirmDialog>
+
+                    <p:spacer width="10" />
+                    <p:commandButton class="updateProfileBtn" action="#{updateProfileAdmin.back}" value="Cancel" update="updateProfileForm" ajax="true" styleClass="ui-button-secondary" style="width:50%;" />
+                </div>
+            </h:form>
+        </p:panelGrid>
+    </div>
+    <footer>
+        <ui:include src="include/footer.xhtml" />
+    </footer>
+
+    <script>
+       function toggleInputs() {
+        var displayFirstName = document.getElementById('displayFirstName');
+        var editFirstName = document.getElementById('editFirstName');
+
+        displayFirstName.style.display = 'none';
+        editFirstName.style.display = 'block';
+        }
+    </script>
+</h:body>
+</html>

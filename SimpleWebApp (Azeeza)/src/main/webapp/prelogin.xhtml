@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        //font-family: 'Merriweather', serif;
+        //background-color: #FBEEC1;
+        background: linear-gradient(to right, #999966 0%, #ff9999 100%) !important;
+        //background-size: contain;
+      }
+
+      .preLoginBtn {
+        float: right;
+        //width: 50%;
+      }
+
+      .card {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         box-shadow: 2px 2px 5px grey;
+      }
+
+      .dialog-position {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .showcase-text-align-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+</style>
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Login</title>
+</h:head>
+
+<h:body>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <p:graphicImage value="/webapp/images/simple-web-app-logo.png" style="width: 250px; height: 100px;"></p:graphicImage>
+    </div>
+    <div class="card">
+        <h:form name="preLoginForm" var="prelogin" id="preLoginForm">
+            <p:panel align="center" name="preLoginPanel" id="preLoginPanel">
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <p:graphicImage value="/webapp/images/key.png" style="width: 100px; height: 100px;"></p:graphicImage>
+                </div>
+                <h3 style="text-align:center;">Login</h3>
+                <!--<p>This step is required to determine whether you are able to 2FA for login or not</p>-->
+                <p:messages id="errorMessages" showDetail="true" autoUpdate="true" closable="true" />
+                <i class="pi pi-user" />
+                <p:inputText placeholder="Username" value="#{prelogin.username}" />
+                <h:message for="username"></h:message>
+                <br></br><br></br>
+                <p:commandButton class="preLoginBtn" action="#{prelogin.getAdaptiveAuthApi}" value="Login" update="preLoginForm" ajax="true" styleClass="ui-button-primary" style="width:100%" oncomplete="PF('loginDialog').show()" />
+            </p:panel>
+        </h:form>
+    </div>
+
+    <p:dialog header="Select your Authentication Method" widgetVar="loginDialog" modal="true" dynamic="true" closable="true" visible="false" width="500" height="300" styleClass="dialog-position">
+            <p:panelGrid columns="1" layout="grid" styleClass="showcase-text-align-center" style="align-items:center;">
+
+                <h:form name="selectAuthOtpForm" var="selectAuthOtpForm" id="selectAuthOtpForm">
+                    <h:panelGrid styleClass="bordered-panel">
+                        <p:commandLink action="#{requestOtp.toOtpAuth}" update="selectAuthOtpForm" >
+                            <h:graphicImage value="/webapp/images/otp.png" style="width: 100px; height: 100px;"></h:graphicImage>
+                            <h5 style="text-align:center">OTP</h5>
+                        </p:commandLink>
+                    </h:panelGrid>
+                </h:form>
+
+                <h:form name="selectOtpRequestForm" var="selectoOtpRequestForm" id="selectOtpRequestForm">
+                    <h:panelGrid styleClass="bordered-panel">
+                        <p:commandLink action="#{requestOtp.getRequestOtpApi}" update="selectOtpRequestForm" >
+                            <h:graphicImage value="/webapp/images/otp1.png" style="width: 100px; height: 100px;"></h:graphicImage>
+                            <h5 style="text-align:center">CR OTP</h5>
+                        </p:commandLink>
+                    </h:panelGrid>
+                </h:form>
+
+                <h:form name="selectPushNotificationForm" var="selectPushNotificationForm" id="selectPushNotificationForm">
+                    <h:panelGrid styleClass="bordered-panel">
+                        <p:commandLink action="#{requestMobilePushCr.getRequestMobilePushCrApi}" update="selectPushNotificationForm"  >
+                            <h:graphicImage value="/webapp/images/notification.png" style="width: 100px; height: 100px;"></h:graphicImage>
+                            <h5 style="text-align:center">Push Notification</h5>
+                        </p:commandLink>
+                    </h:panelGrid>
+                </h:form>
+
+<!--                <h:form name="selectQrCodeForm" var="selectQrCodeForm" id="selectQrCodeForm">-->
+<!--                    <h:panelGrid styleClass="bordered-panel">-->
+<!--                        <p:commandLink action="#{requestQr.getRequestQrApi}" update="selectQrCodeForm"  >-->
+<!--                            <h:graphicImage value="/webapp/images/qr-code.png" style="width: 100px; height: 100px;"></h:graphicImage>-->
+<!--                            <h5 style="text-align:center">QR Code</h5>-->
+<!--                        </p:commandLink>-->
+<!--                    </h:panelGrid>-->
+<!--                </h:form>-->
+            </p:panelGrid>
+    </p:dialog>
+
+</h:body>
+</html>

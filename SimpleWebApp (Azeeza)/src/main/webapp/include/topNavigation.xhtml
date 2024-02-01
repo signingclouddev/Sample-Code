@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        background-color: #FBEEC1;
+      }
+
+      .spacer-menuitem {
+        width: 300px; /* Adjust the width as per your desired space */
+        visibility: hidden; /* Hide the spacer menu item */
+      }
+    </style>
+    <h:outputStylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <h:outputStylesheet href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <h:outputScript src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <title>Top Navigation</title>
+</h:head>
+
+<h:body>
+    <div class="card">
+        <h:form>
+            <p:menubar style="text-align:right;">
+                <p:menuitem outcome="welcome.xhtml" align="left">
+                    <div>
+                        <p:graphicImage value="/webapp/images/simple-web-app-logo.png" style="width: 180px; height: 70px;" />
+                    </div>
+                </p:menuitem>
+                <p:menuitem style="width:440px; visibility:hidden;" />
+                <p:menuitem style="width:180px; visibility:hidden;" rendered="#{prelogin.roles != '2' &amp;&amp; loginUser.roles != '2'}"/>
+                <p:menuitem value="Home" icon="pi pi-home" outcome="welcome.xhtml" align="right" />
+                <p:menuitem value="Apply Budget" icon="pi pi-money-bill" action="#{manageDevice.applyBudget}" rendered="#{prelogin.roles != '2' &amp;&amp; loginUser.roles != '2'}" />
+                <p:submenu label="Manage Budget" value="Manage Leave" icon="pi pi-money-bill" style="text-align:left" rendered="#{loginUser.roles != '3'}">
+                    <p:menuitem value="Budget List" icon="pi pi-list" outcome="budgetList.xhtml" />
+                    <p:menuitem value="Budget Status" icon="pi pi-eye" outcome="budgetStatus.xhtml" />
+                </p:submenu>
+                <p:submenu label="Manage Users" value="Manage Users" icon="pi pi-users" style="text-align:left" rendered="#{loginUser.roles != '3'}">
+                    <p:menuitem value="User List" icon="pi pi-list" outcome="userList.xhtml" />
+                    <p:menuitem value="Add New User" icon="pi pi-fw pi-user-plus" outcome="userRegistration.xhtml" />
+                </p:submenu>
+                <p:submenu label="#{prelogin.username}" icon="pi pi-fw pi-user" style="text-align:left" align="right">
+                    <p:menuitem value="View Profile" icon="pi pi-eye" outcome="viewProfile.xhtml" />
+                    <p:menuitem value="Edit Profile" icon="pi pi-fw pi-user-edit" outcome="updateProfileAdmin.xhtml" rendered="#{loginUser.roles != '3'}" />
+                    <p:menuitem value="Change Password" icon="pi pi-key" outcome="updatePassword.xhtml" />
+                    <p:menuitem value="Manage Device" icon="pi pi-fw pi-tablet" outcome="deviceList.xhtml" />
+                    <p:menuitem value="Logout" icon="pi pi-fw pi-power-off" action="#{manageDevice.logout}"  />
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+    </div>
+</h:body>
+</html>

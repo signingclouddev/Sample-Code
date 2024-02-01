@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    
+    <h:head>
+        <title>Simple Login</title>
+        
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+        <script src="https://kit.fontawesome.com/9320327796.js" crossorigin="anonymous"></script>
+    </h:head>
+    
+    <h:body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6" style="background-color: #B3E5FC; background-size: cover; height: 100dvh; padding: 0;">
+                    
+                    <div id="icon" class="px-3 py-3">
+                        <a class="home" href="http://localhost:8080/simpleweb/faces/index.xhtml" style="color: #000000; text-decoration: none;">
+                          <img src="resources/images/simplelogo.png" alt="icon" style="width:32px; height:32px; margin-top: -5px;"/>
+                          <span style="font-family: 'Montserrat', sans-serif; font-size: 21px; font-weight: bold;">SimpleWeb</span>
+                        </a>    
+                      </div>
+
+                    <div class="text-center">
+                        <img class="mx-auto img-fluid" src="resources/images/register1.png"/>
+                    </div>
+                
+                    <div>
+                        <div class="col d-flex justify-content-center mt-5">
+                            <p style="font-family: 'Roboto', sans-serif; font-size: 19px;">Already a user? Login&nbsp;</p>
+                            <p:commandLink style="font-family: 'Roboto', sans-serif; font-size: 19px;" value="here" immediate="true" action="/index.xhtml?faces-redirect=true"/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6 d-flex justify-content-center" style="height: 100dvh;">
+
+                    <div class="text-align-center mt-5">
+                        <h:form>
+                            <p:growl id="growl" showDetail="true" />
+
+                            <p style="font-family: 'Roboto', sans-serif; font-weight: bold;">Phone Number</p>
+                          
+                            <span id="phone" class="mx-3 my-3 ui-float-label">
+                                <p:inputText id="phone-input" class="rounded-pill" value="#{registermisc.phonenumber}" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please enter a Phone Number!" validatorMessage="Invalid Phone Number Format">
+                                    <f:validateRegex pattern="^(\+?6?01)[0-46-9]-*[0-9]{7,8}$"/>
+                                </p:inputText>
+                          
+                                <p:outputLabel for="@previous" indicateRequired="false" value="Phone Number" style="text-align: center;"/>
+                             </span>
+                          
+                            <p style="font-family: 'Roboto', sans-serif; font-weight: bold;">Security Question</p>
+                           
+                            <p:selectOneMenu id="longItemLabel" value="#{registermisc.selectedvalue}" required="true" requiredMessage="Please select a security question" class="rounded-pill" style="width: 100%;">
+                            <f:selectItem itemLabel="Select a question" itemValue=""/>    
+                            <f:selectItems value="#{registermisc.questionList.entrySet()}" var="entry"
+                                                      itemLabel="#{entry.value}" itemValue="#{question.key}"/>
+                            </p:selectOneMenu>
+                            
+                            <div class="mt-2">
+                                <p:inputText class="rounded-pill" id="answer" autocomplete="off" value="#{registermisc.answer}" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please answer to the security question!" style="width: 100%;"/>            
+                            </div>
+                          
+                            <div class="row mx-3 my-4">  
+                                <h:commandButton value="Submit" action="#{registermisc.register()}" class="rounded-pill py-2 px-2" style="font-size: 20px; font-family: Roboto; font-weight: bold; background-color: #039BE5;" update="growl" ajax="true" process="@form"/>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <style>
+            b, p {
+                font-family: 'Roboto', sans-serif;
+            }
+        </style>
+    </h:body>
+</html>

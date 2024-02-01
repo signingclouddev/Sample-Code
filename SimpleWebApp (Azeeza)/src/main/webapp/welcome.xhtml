@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <style type="text/css">
+    body {
+        background-color: #FBEEC1;
+        //background: linear-gradient(to right, #999966 0%, #ff9999 100%);
+        font-family: 'Merriweather', serif;
+    }
+
+    .container {
+        position: relative;
+        display: flex;
+    }
+
+    .dialog-position {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .bordered-panel-pending {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #FEDC56;
+        width: 100%;
+        text-align: center;
+    }
+
+    .bordered-panel-approved {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #86DC3D;
+        width: 100%;
+        text-align: center;
+    }
+
+    .bordered-panel-rejected {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #FF6347;
+        width: 100%;
+        text-align: center;
+    }
+
+    .bordered-panel-pieChart {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #F8A4FF;
+        //width: 10%;
+        text-align: center;
+        margin:0 auto;
+    }
+
+    .bordered-panel-barChart {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #F8A4FF;
+        //width: 80%;
+        text-align: center;
+        margin:0 auto;
+    }
+
+    .bordered-panel-budget-total {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #4682B4;
+        width: 100%;
+        text-align: center;
+    }
+
+    .bordered-panel-history {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #FEDC56;
+        width: 100%;
+        text-align: center;
+    }
+
+    .bordered-panel-type {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+    }
+
+    .chart-size {
+        width: 95%;
+        fill: black;
+    }
+
+    panelGrid {
+        margin: 0;
+        padding: 0;
+    }
+
+    menu-item {
+        justify-content: space-between;
+    }
+
+    footer {
+        text-align: center;
+    }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/primeicons/4.1.0/primeicons.min.css" />
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Budget Management System</title>
+</h:head>
+<h:body>
+    <ui:include src="include/topNavigation.xhtml" />
+    <p:panelGrid columns="1" style="width:100%; text-align:center;" layout="grid">
+        <h2>Budget Management System</h2>
+    </p:panelGrid>
+    <div class="container" style="display:flex;">
+        <p:panelGrid columns="1" style="width:45%; text-align:center;">
+            <p:datePicker id="showDate" value="#{displayCalender.date}" inline="true" >
+                    <h3>Today's Date</h3>
+            </p:datePicker>
+        </p:panelGrid>
+
+        <!--Welcome Page for Company Admin: Manager Side-->
+        <p:panelGrid columns="1" style="width:55%" rendered="#{loginUser.roles != '3'}">
+            <p:panelGrid columns="3" layout="grid" class="text-align:center;">
+            <h:form name="statusPendingForm" var="statusPendingForm" id="statusPendingForm">
+                <h:panelGrid styleClass="bordered-panel-pending" style="margin:0 auto;">
+                    <p:link outcome="statusPending.xhtml">
+                        <h3 style="text-align:center; color:black;">Pending</h3>
+                        <h:graphicImage value="/webapp/images/pending.png" style="width:100px; height:100px;" />
+                        <h:outputText value="" />
+                    </p:link>
+                </h:panelGrid>
+            </h:form>
+
+            <h:form name="statusApprovedForm" var="statusApprovedForm" id="statusApprovedForm">
+                <h:panelGrid styleClass="bordered-panel-approved" style="margin:0 auto;">
+                    <p:link outcome="statusApproved.xhtml">
+                        <h3 style="text-align:center; color:black;">Approved</h3>
+                        <h:graphicImage value="/webapp/images/approved.png" style="width:100px; height:100px;" />
+                        <h:outputText value="" />
+                    </p:link>
+                </h:panelGrid>
+            </h:form>
+
+            <h:form name="statusRejectedForm" var="statusRejectedForm" id="statusRejectedForm">
+                <h:panelGrid styleClass="bordered-panel-rejected" style="margin:0 auto;">
+                    <p:link outcome="statusRejected.xhtml">
+                        <h3 style="text-align:center; color:black;">Rejected</h3>
+                        <h:graphicImage value="/webapp/images/rejected.png" style="width:100px; height:100px;" />
+                        <h:outputText value="" />
+                    </p:link>
+                </h:panelGrid>
+            </h:form>
+            </p:panelGrid>
+
+            <p:panelGrid columns="2" layout="grid" style="text-align:center;" class="text-align:center;">
+                <h:panelGrid styleClass="bordered-panel-pieChart" style="margin:0 auto;">
+                    <p:pieChart model="#{displayChart.pieChartModel}" styleClass="chart-size" rendered="#{loginUser.roles != '3'}">
+                        <h3 style="color:black;">Types of Applied Approved Budget</h3>
+                    </p:pieChart>
+                </h:panelGrid>
+
+                <h:panelGrid styleClass="bordered-panel-barChart" style="margin:0 auto;">
+                    <p:barChart model="#{displayChart.barChartModel}" styleClass="chart-size" rendered="#{loginUser.roles != '3'}">
+                        <h3 style="color:black;">Total Applied Approved Budget based on Applicants</h3>
+                    </p:barChart>
+                </h:panelGrid>
+            </p:panelGrid>
+        </p:panelGrid>
+
+        <!--Welcome Page for User: Employee Side-->
+        <p:panelGrid columns="1" style="width:55%;" rendered="#{prelogin.roles != '2' &amp;&amp; loginUser.roles != '2'}">
+            <p:panelGrid columns="2" layout="grid" class="text-align:center;">
+                <h:form name="budgetTotalForm" var="budgetTotalForm" id="budgetTotalForm">
+                    <h:panelGrid styleClass="bordered-panel-budget-total" style="margin:0 auto; height:200px;">
+                        <p:link onmousedown="PF('budgetTotalDialog').show()">
+                            <h3 style="text-align:center; color:black;">Total Budget Applied</h3>
+                            <div class="inline-items" style="display:flex; align-items:center;">
+                            <h:graphicImage value="/webapp/images/budget.png" style="width:100px; height:100px; margin-left:70px;" />
+                                <ui:repeat value="#{displayTotalBudget.display()}" var="data" >
+                            </ui:repeat>
+                            </div>
+                        </p:link>
+                    </h:panelGrid>
+                </h:form>
+                <h:form name="budgetHistoryForm" var="budgetHistoryForm" id="budgetHistoryForm">
+                    <h:panelGrid styleClass="bordered-panel-history" style="margin:0 auto; height:200px;">
+                        <p:link onmousedown="PF('budgetHistoryDialog').show()">
+                            <h3 style="text-align:center; color:black;">History</h3>
+                            <h:graphicImage value="/webapp/images/history.png" style="width:100px; height:100px;" />
+                            <h:outputText value="" />
+                        </p:link>
+                    </h:panelGrid>
+                </h:form>
+            </p:panelGrid>
+
+            <p:panelGrid columns="1" layout="grid" class="text-align:center" style="width:100%">
+                <h3>Recently Budget Applied</h3>
+                <p:dataTable id="recentlyTable" var="displayData" value="${displayRecently.display()}" >
+                    <p:column headerText="Budget Type">
+                        <h:outputText value ="${displayData.budget_type}" />
+                    </p:column>
+                    <p:column headerText="Date">
+                        <h:outputText value ="${displayData.budget_date}" />
+                    </p:column>
+                    <p:column headerText="Amount (RM)">
+                        <h:outputText value ="${displayData.budget_amount}" />
+                    </p:column>
+                    <p:column headerText="Remarks">
+                        <h:outputLabel value="${displayData.budget_remarks}" style="text-align:center;" />
+                    </p:column>
+                    <p:column headerText="Status">
+                        <h:outputText value ="${displayData.budget_status}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panelGrid>
+        </p:panelGrid>
+    </div>
+
+    <!--Welcome Page for Company Admin: Manager Side (Recently Applied Budget)-->
+    <p:panelGrid columns="1" class="text-align:center" style="width:100%;" rendered="#{loginUser.roles != '3'}">
+        <h3>Recently Budget Applied</h3>
+        <p:dataTable id="todayTable" var="displayData" value="#{displayRecentlyBudget.display()}" scrollable="true" scrollHeight="250">
+            <p:column headerText="Employee Name">
+                <h:outputText value ="#{displayData.employee_fname}" />
+                <h:outputText value =" #{displayData.employee_lname}" />
+            </p:column>
+            <p:column headerText="Budget Type">
+                <h:outputText value ="#{displayData.budget_type}" />
+            </p:column>
+            <p:column headerText="Date">
+                <h:outputText value ="#{displayData.budget_date}" />
+            </p:column>
+            <p:column headerText="Amount (RM)">
+                <h:outputText value ="#{displayData.budget_amount}" />
+            </p:column>
+            <p:column headerText="Status">
+                <h:outputText value ="#{displayData.budget_status}" />
+            </p:column>
+        </p:dataTable>
+    </p:panelGrid>
+
+    <footer>
+        <ui:include src="include/footer.xhtml" />
+    </footer>
+
+    <p:dialog header="Total Budget Applied" widgetVar="budgetTotalDialog" modal="true" dynamic="true" closable="true" visible="false" width="400" height="300" styleClass="dialog-position">
+        <div class="container">
+            <p:panelGrid columns="2" style="text-align:center; width:400px; height:300px;">
+                <f:facet name="header">
+                    <h:graphicImage value="/webapp/images/budget.png" style="width: 100px; height: 100px;"></h:graphicImage>
+                </f:facet>
+
+                <h:outputText value="Budget Amount (RM)" style="font-weight:bold;" />
+                <ui:repeat value="#{displayTotalBudget.display()}" var="data">
+                    <h:outputText value="#{data.budget_amount}" /><br/>
+                </ui:repeat>
+
+                <h:outputText value="Total Amount (RM)" style="font-weight:bold;" />
+                <h:outputText id="budget_totalAmount" value="#{not empty displayTotalBudget.display() ? displayTotalBudget.display().get(0).budget_totalAmount : '0.0'}" />
+            </p:panelGrid>
+        </div>
+    </p:dialog>
+
+    <p:dialog header="Budget History" widgetVar="budgetHistoryDialog" modal="true" dynamic="true" closable="true" visible="false" width="700" height="500" styleClass="dialog-position">
+        <div class="container" style="display:flex;">
+            <h:form name="searchForm" var="search" id="searchForm">
+                <p:panel id="SearchPanel" header="Search for Specific Budget Status" styleClass="no-border">
+                    <p:panelGrid columns="3">
+                        <p:column>
+                            <p:outputLabel id="search" for="Search" value="Budget Status :" />
+                        </p:column>
+                        <p:column>
+                            <p:selectOneMenu id="Search" value="${displayHistory.searchQuery}">
+                                <f:selectItem itemLabel="-- No Selection --" itemValue="" />
+                                <f:selectItem itemLabel="Pending" itemValue="Pending" />
+                                <f:selectItem itemLabel="Approved" itemValue="Approved" />
+                                <f:selectItem itemLabel="Rejected" itemValue="Rejected" />
+                            </p:selectOneMenu>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton id="btn" value="Search" action="${displayHistory.find()}" update="searchForm" />
+                        </p:column>
+                    </p:panelGrid>
+                </p:panel>
+                <p:panel id="DisplayPanel" header="Budget History List">
+                    <p:panelGrid columns="1" layout="grid" class="text-align:center;">
+                        <p:dataTable id="historyTable" var="displayData" value="${displayHistory.find()}" >
+                            <p:column headerText="ID" width="20px">
+                                <h:outputText value="${displayData.budget_id}" />
+                            </p:column>
+                            <p:column headerText="Budget Type" width="150px">
+                                <h:outputText value ="${displayData.budget_type}" />
+                            </p:column>
+                            <p:column headerText="Date">
+                                <h:outputText value ="${displayData.budget_date}" />
+                            </p:column>
+                            <p:column headerText="Amount (RM)">
+                                <h:outputText value ="${displayData.budget_amount}" />
+                            </p:column>
+                            <p:column headerText="Budget Status">
+                                <h:outputLabel value="${displayData.budget_status}" />
+                            </p:column>
+                        </p:dataTable>
+                    </p:panelGrid>
+                </p:panel>
+            </h:form>
+        </div>
+    </p:dialog>
+
+    <script>
+    function showBudgetBalanceDialog(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        PF('budgetBalanceDialog').show();
+    }
+
+    function showBudgetHistoryDialog(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        PF('budgetHistoryDialog').show();
+    }
+    </script>
+</h:body>
+</html>

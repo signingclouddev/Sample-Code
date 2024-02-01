@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        background-color: #FBEEC1;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
+        grid-gap: 10px; /* gap between grid items */
+        margin: 0;
+        padding: 0;
+      }
+
+      .grid-item i{
+        //
+      }
+
+      .input-field {
+        width: 70%; /* Adjust the width as needed */
+      }
+
+      footer {
+        text-align: center;
+      }
+    </style>
+    <h:outputStylesheet href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <h:outputStylesheet href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <h:outputScript src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Apply Budget</title>
+</h:head>
+
+<h:body>
+    <ui:include src="include/topNavigation.xhtml" />
+
+    <div class="container" style="display:flex;">
+        <p:panelGrid columns="1" style="width:45%; text-align:center; background-image:url(#{webapp['images:resume.png']})!important;">
+            <h:graphicImage value="/webapp/images/requestBudget.png" style="max-width:50%"></h:graphicImage>
+        </p:panelGrid>
+
+        <p:panelGrid columns="1" style="width:55%">
+            <h:messages globalOnly="true" layout="table" />
+            <h:form name="requestBudgetForm" var="requestBudget" id="requestBudgetForm" enctype="multipart/form-data">
+                <h3 style="text-align:center;">Apply Budget</h3>
+                <p:messages id="errorMessages" showDetail="true" autoUpdate="true" closable="true" />
+
+                <div class="grid-item">
+                    <h:outputLabel value="Budget Type" /><br></br>
+                    <p:selectOneMenu id="budgetType" value="#{requestBudget.budget_type}" styleClass="input-field">
+                        <f:selectItem itemLabel="Operation Budget" itemValue="Operation Budget" />
+                        <f:selectItem itemLabel="Project Budget" itemValue="Project Budget" />
+                        <f:selectItem itemLabel="Marketing Budget" itemValue="Marketing Budget" />
+                        <f:selectItem itemLabel="Training and Development Budget" itemValue="Training and Development Budget" />
+                        <f:selectItem itemLabel="Travel and Expenses Budget" itemValue="Travel and Expenses Budget" />
+                        <f:selectItem itemLabel="Research and Development Budget" itemValue="Research and Development Budget" />
+                        <f:selectItem itemLabel="Sales and Revenue Budget" itemValue="Sales and Revenue Budget" />
+                        <f:selectItem itemLabel="Contingency Budget" itemValue="Contingency Budget" />
+                    </p:selectOneMenu>
+                    <h:message for="budgetType"></h:message>
+                    <br></br><br></br>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <h:outputLabel value="Amount" /><br></br>
+                        <p:spinner id="budgetAmount" value="#{requestBudget.budget_amount}" prefix="RM " min="0" stepFactor="0.50" styleClass="input-field" />
+                        <h:message for="budgetAmount"></h:message>
+                        <br></br><br></br>
+                    </div>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <h:outputLabel value="Remarks" /><br></br>
+                        <p:inputTextarea id="remarks" value="#{requestBudget.budget_remarks}" style="width: 100%" />
+                        <h:message for="remarks"></h:message>
+                        <br></br><br></br>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <p:commandButton class="reqBudgetBtn" action="#{requestBudget.getRequestTransactionSigningMobilePushCRApi}" value="Submit" update="requestBudgetForm" ajax="true" styleClass="ui-button-primary" style="width:50%;">
+                        <p:confirm header="Confirmation" message="Are you sure you want to apply for budget?" icon="pi pi-exclamation-triangle" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                        <p:commandButton value="No" action="#{requestBudget.no}" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    </p:confirmDialog>
+
+                    <p:spacer width="10" />
+                    <p:commandButton class="reqBudgetBtn" action="#{requestBudget.clear}" value="Clear" update="requestBudgetForm" ajax="true" styleClass="ui-button-help" style="width:50%;" />
+                    <p:spacer width="10" />
+                    <p:commandButton class="reqBudgetBtn" action="#{requestBudget.back}" value="Cancel" update="requestBudgetForm" ajax="true" styleClass="ui-button-secondary" style="width:50%;" />
+                </div>
+            </h:form>
+        </p:panelGrid>
+    </div>
+    <footer>
+        <ui:include src="include/footer.xhtml" />
+    </footer>
+
+    <script>
+    function redirectToRequestBudget() {
+        window.location.href = "reqBudget.xhtml";
+    }
+    </script>
+</h:body>
+</html>

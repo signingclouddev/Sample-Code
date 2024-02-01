@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <style>
+      body {
+        background: linear-gradient(to right, #999966 0%, #ff9999 100%);
+      }
+
+      .button.ui-button {
+        margin-right: .5rem;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .card {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         box-shadow: 2px 2px 5px grey;
+      }
+</style>
+    <h:outputStylesheet name="primeicons.css" library="primefaces"/>
+    <h:outputScript name="primefaces.js" />
+    <link rel="icon" href="webapp/images/simple-web-icon-logo.png" type="image/png" />
+    <title>Challenge OTP Transaction Signing</title>
+</h:head>
+
+<h:body>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <p:graphicImage value="/webapp/images/simple-web-app-logo.png" style="width: 250px; height: 100px;"></p:graphicImage>
+    </div>
+    <div class="card">
+        <h:form name="challengeOtpTransSign" var="authChallengeOtpTransSign" id="challengeOtpTransSign">
+            <p:panel name="challengeOtpTransSignPanel" id="challengeOtpTransSignPanel" style="background: white;">
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <h:graphicImage value="/webapp/images/decision.png" style="width: 150px; height: 150px;"></h:graphicImage>
+                </div>
+                <h3 style="text-align:center;">Authorize Challenge OTP Transaction Signing</h3>
+                <p:messages id="errorMessages" showDetail="true" autoUpdate="true" closable="true" />
+                <p style="text-align:center">Hello,
+                    <strong><h:outputText value="#{requestTransactionSigningChallenge.username}"/></strong>
+                    <br></br>
+                    <h:outputText value="Challenge Code: " />
+                    <strong><h:outputLabel value="#{requestTransactionSigningChallenge.challenge}" /></strong>
+                </p>
+
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <i class="pi pi-lock" />
+                    <p:inputText id="otpToken" placeholder="OTP Token" value="#{requestTransactionSigningChallenge.otp}" />
+                    <h:message for="otpToken"></h:message>
+                </div>
+                <br></br>
+                <div class="button-container">
+                    <p:commandButton class="challengeOtpTransSignBtn" action="#{authTransactionSigningCrOtp.getAuthTransactionSigningCrOtpApi}" value="Confirm" update="challengeOtpTransSign" ajax="true" styleClass="ui-button-primary" style="width:50%" />
+                    <p:spacer width="10" />
+                    <p:commandButton class="challengeOtpTransSignBtn" action="#{requestTransactionSigningMobilePushCR.back}" value="Cancel" update="challengeOtpTransSign" ajax="true" styleClass="ui-button-secondary" style="width:50%;" />
+                </div>
+            </p:panel>
+        </h:form>
+    </div>
+</h:body>
+</html>

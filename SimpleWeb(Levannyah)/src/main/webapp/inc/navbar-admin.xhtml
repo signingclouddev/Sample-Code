@@ -1,0 +1,55 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <h:form>
+    <p:toolbar style="align-items: center;">
+      <p:toolbarGroup style="margin-left: 3rem;">
+        <p:menuitem>
+          <p:graphicImage value="webapp/resources/img/navbar.svg" width="180" alt="Simple App" onclick="redirectToCandidates()"/>
+        </p:menuitem>
+      </p:toolbarGroup>
+
+      <p:toolbarGroup>
+        <p:commandLink value="Candidates" onclick="redirectToCandidates()" styleClass="cmdLink" style="text-decoration: none; margin-left: 3rem; margin-right: 5rem;"/>
+        <p:commandLink value="Voters" onclick="redirectToVoters()" styleClass="cmdLink" style="text-decoration: none; margin-right: 5rem;"/>
+      </p:toolbarGroup>
+
+      <p:toolbarGroup style="margin-right: 3rem;">
+        <p:menuButton value="#{adaptive.username}" buttonStyleClass="ui-button-outlined black-text">
+          <p:menuitem value="Self Service" onclick="redirectToSelfServiceAdmin()" icon="pi pi-fw pi-cog"/>
+          <p:menuitem value="Logout" action="#{login.logout}" icon="pi pi-fw pi-sign-out"/>
+        </p:menuButton>
+      </p:toolbarGroup>
+    </p:toolbar>
+  </h:form>
+
+  <style>
+    .cmdLink {
+      color: black !important;
+    }
+
+    .cmdLink:hover {
+      color: teal !important;
+      text-decoration: underline teal 0.15rem !important;
+      text-underline-offset: 0.5rem !important;
+    }
+  </style>
+
+  <script type="text/javascript">
+    function redirectToCandidates() {
+      window.location.href = 'candidates.xhtml';
+    }
+
+    function redirectToVoters() {
+      window.location.href = 'voters.xhtml';
+    }
+
+    function redirectToSelfServiceAdmin() {
+      window.location.href = 'self-serviceadmin.xhtml';
+    }
+  </script>
+</ui:composition>

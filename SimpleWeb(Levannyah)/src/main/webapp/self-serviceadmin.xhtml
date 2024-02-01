@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <h:head>
+    <title>Simple App | Self Service</title>
+    <ui:include src="/inc/header.xhtml"/>
+    <style>
+      .custom-container {
+        padding-left: 100px;
+        padding-right: 100px;
+      }
+    </style>
+  </h:head>
+
+  <h:body styleClass="cyan lighten-5">
+    <f:event listener="#{updateProfile.getAdmin}" type="preRenderView" />
+    <f:event listener="#{userDeviceList.getUserDeviceList}" type="preRenderView" />
+
+    <ui:include src="/inc/navbar-admin.xhtml"/>
+
+    <section id="vote" class="section section-vote" style="text-align: center;">
+      <div class="custom-container">
+        <h4 style="margin-top: 2rem; margin-bottom: 2rem;">Self Service</h4>
+        <h:form>
+          <p:growl id="growl" showDetail="true" skipDetailIfEqualsSummary="true">
+            <p:autoUpdate/>
+          </p:growl>
+        </h:form>
+        <p:card style="border-radius: 10px;">
+          <p:tabView>
+            <p:tab title="Update Profile">
+              <h:form id="updateProfileForm" class="col s12">
+                <div class="row">
+                  <div class="col s6">
+                    <img class="responsive-img" src="webapp/resources/img/edit-profile.png" alt="Edit Profile" style="max-width: 250px; max-height: 250px; margin-top: 4rem;"/>
+                  </div>
+
+                  <div class="input-field col s6 m5">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <h:inputText id="firstName" value="#{updateProfile.firstName}" required="true" requiredMessage="First Name is required" autocomplete="off"/>
+                        <h:outputLabel for="firstName" value="First Name" />
+                      </div>
+                      <div class="input-field col s6">
+                        <h:inputText id="lastName" value="#{updateProfile.lastName}" required="true" requiredMessage="Last Name is required" autocomplete="off"/>
+                        <h:outputLabel for="lastName" value="Last Name" />
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <h:inputText id="username" value="#{updateProfile.adminUsername}" readonly="true"/>
+                        <h:outputLabel for="username" value="Username" />
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <h:inputText id="email" value="#{updateProfile.email}" required="true" requiredMessage="Email is required" autocomplete="off"/>
+                        <h:outputLabel for="email" value="Email" />
+                      </div>
+                    </div>
+
+                    <p:commandButton value="Cancel" onclick="redirectToCandidates()" immediate="true" styleClass="ui-button-danger" style="width:40%"/>
+                    <p:commandButton value="Save" action="#{updateProfile.update}" styleClass="btnTeal" style="width:40%" />
+                  </div>
+                </div>
+              </h:form>
+            </p:tab>
+
+            <p:tab title="Change Password">
+              <h:form id="updatePasswordForm">
+                <div class="row">
+                  <div class="col s12 m6">
+                    <img class="responsive-img" src="webapp/resources/img/password.png" alt="Password Criteria" style="max-width: 400px; max-height: 400px;"/>
+                  </div>
+
+                  <div class="col s12 m5">
+                    <div class="row">
+                      <div class="input-field">
+                        <p:password id="password" value="#{updatePassword.password}" required="true" requiredMessage="Current Password is required"/>
+                        <h:outputLabel for="password" value="Current Password" />
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="input-field">
+                        <p:password id="newPassword" value="#{updatePassword.newPassword}" required="true" requiredMessage="New Password is required"/>
+                        <h:outputLabel for="newPassword" value="New Password" />
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="input-field">
+                        <p:password id="confirmPassword" value="#{updatePassword.confirmPassword}" required="true" requiredMessage="Confirm Password is required"/>
+                        <h:outputLabel for="confirmPassword" value="Confirm Password" />
+                      </div>
+                    </div>
+
+                    <p:commandButton value="Cancel" onclick="redirectToCandidates()" immediate="true" styleClass="ui-button-danger" style="width: 40%;" />
+                    <p:commandButton value="Confirm" action="#{updatePassword.update}" oncomplete="reset()" styleClass="btnTeal" style="width: 40%;" />
+                  </div>
+                </div>
+              </h:form>
+            </p:tab>
+
+            <p:tab title="Manage Device">
+              <div class="row">
+                <div class="col s6">
+                  <img class="responsive-img" src="webapp/resources/img/device.png" alt="Device" style="max-width: 170px; max-height: 170px; margin-top: 4rem;"/>
+                </div>
+
+                <div class="col s6 m5">
+                  <div class="row">
+                    <table id="deviceList" class="highlight responsive-table">
+                      <thead style="text-align: center;">
+                      <tr>
+                        <th style="text-align: center;">Device Name</th>
+                        <th style="text-align: center;">Device Model</th>
+                      </tr>
+                      </thead>
+
+                      <tbody>
+                      <tr>
+                        <td style="text-align: center;">#{userDeviceList.deviceName}</td>
+                        <td style="text-align: center;">#{userDeviceList.deviceModel}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+
+                    <div style="margin-top: 2em;">
+                      <p:commandButton value="Register a New Device" onclick="PF('confirmDialog').show()" styleClass="btnTeal" style="width:40%" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </p:tab>
+          </p:tabView>
+        </p:card>
+      </div>
+    </section>
+
+    <p:dialog id="confirmDialog" header="Unregister Device" widgetVar="confirmDialog" modal="true" showEffect="fade" hideEffect="fade" dynamic="true" closable="false" draggable="false">
+      <h:form id="confirmForm">
+        <h:outputText value="This action will unbind your current device. Are you sure you want to proceed?"/>
+        <br /><br />
+        <p:commandButton value="Confirm" action="#{unregisterDevice.unregister}" onclick="confirmDialog.hide();" style="float: right;" styleClass="btnTeal" />
+        <p:commandButton value="Cancel" onclick="confirmDialog.hide();" style="float: right;" styleClass="ui-button-danger" />
+      </h:form>
+    </p:dialog>
+
+    <script>
+        function redirectToCandidates() {
+         window.location.href = 'candidates.xhtml';
+        }
+    </script>
+
+    <div id="myFooter" class="footer" style="background-color: transparent; text-align: center; margin-top: 2rem; margin-bottom: 1rem;">
+      <h:outputText escape="false" value="Copyright &#169; 2023 Simple App"/>
+    </div>
+
+    <ui:include src="/inc/footer.xhtml"/>
+  </h:body>
+</html>

@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    
+    <h:head>
+        <title>Simple Login</title>
+        
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+        <script src="https://kit.fontawesome.com/9320327796.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    </h:head>
+    
+    <h:body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6" style="background-color: #B3E5FC; background-size: cover; height: 100dvh; padding: 0;">
+                    
+                    <div id="icon" class="px-3 py-3">
+                        <a class="home" href="http://localhost:8080/simpleweb/faces/index.xhtml" style="color: #000000; text-decoration: none;">
+                          <img src="resources/images/simplelogo.png" alt="icon" style="width:32px; height:32px; margin-top: -5px;"/>
+                          <span style="font-family: 'Montserrat', sans-serif; font-size: 21px; font-weight: bold;">SimpleWeb</span>
+                        </a>    
+                      </div>
+
+                    <div class="text-center">
+                        <img class="mx-auto img-fluid" src="resources/images/register1.png"/>
+                    </div>
+                
+                    <div>
+                        <div class="col d-flex justify-content-center mt-5">
+                            <p style="font-family: 'Roboto', sans-serif; font-size: 19px;">Already a user? Login&nbsp;</p>
+                            <p:commandLink style="font-family: 'Roboto', sans-serif; font-size: 19px;" value="here" immediate="true" action="/index.xhtml?faces-redirect=true"/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-6 d-flex justify-content-center" style="height: 100dvh;">
+
+                    <div>
+
+                        <div class="mx-2" style="text-align: left; margin-top: 10px; margin-bottom: 20px;">
+                            <h1><b>Registration</b></h1>
+                            <p>We are glad to see you here. Register account and join us!</p>
+                        </div>
+
+                        <h:form id="regForm">
+                            <p:growl id="growl" showDetail="true" />
+                                  
+                            <div class="row">
+                                <div class="col text-align-center">
+                                    <span id="firstname" class="mx-3 my-3 ui-float-label">
+                                        <p:inputText id="firstname-input" class="rounded-pill" value="#{registration.firstname}" autocomplete="off" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please input First Name!" validatorMessage="firstname can only contain string!">
+                                            <f:validateRegex pattern ="^[a-zA-Z]+$"/>
+                                        </p:inputText>
+                                
+                                        <h:message for="firstname" errorClass="invalid"/>
+                                
+                                        <p:outputLabel for="@previous" value="First Name" style="text-align: center;"/>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <span id="lastname" class="mx-3 my-3 ui-float-label">
+                                        <p:inputText id="lastname-input" class="rounded-pill" value="#{registration.lastname}" autocomplete="off" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please input Last Name!" validatorMessage="lastname can only contain string!">
+                                            <f:validateRegex pattern ="^[a-zA-Z]+$"/>
+                                        </p:inputText>
+                                
+                                        <h:message for="lastname" errorClass="invalid"/>
+                                
+                                        <p:outputLabel for="@previous" value="Last Name" style="text-align: center;"/>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                
+                                    <span id="email" class="mx-3 my-3 ui-float-label">
+                                        <p:inputText id="email-input" class="rounded-pill" value="#{registration.email}" autocomplete="off" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please enter a valid Email!" validatorMessage="Invalid Email Address!">
+                                            <f:validateRegex pattern ="^(.+)@(.+)$"/>
+                                        </p:inputText>
+                            
+                                        <h:message for="email" errorClass="invalid"/>
+                            
+                                        <p:outputLabel for="@previous" value="Email Address" style="text-align: center;"/>
+                                    </span>
+                                </div>
+
+                                <div class="col">
+                                    <span id="username" class="mx-3 my-3 ui-float-label">
+                                        <p:inputText id="username-input" class="rounded-pill" value="#{registration.username}" autocomplete="off" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please enter a valid Username!" validatorMessage="username can only contain string and numbers!">
+                                            <f:validateRegex pattern="^[a-zA-Z0-9]*$"/>
+                                        </p:inputText>
+                                
+                                        <h:message for="username" errorClass="invalid"/>
+                                
+                                        <p:outputLabel for="@previous" value="Username" style="text-align: center;"/>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <span id="pass" class="mx-3 my-3 ui-float-label">
+                                        <p:password id="password" class="rounded-pill" value="#{registration.password}" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please enter a valid Password!"/>
+                                        <p:outputLabel for="@previous" value="Password" indicateRequired="false" style="text-align: center;"/>
+                                    </span>
+                                </div>
+
+                                <div class="col">
+                                    <span id="confirmpassword" class="mx-3 my-3 ui-float-label">
+                                        <p:password id="confirmpass" class="rounded-pill" validator="#{registration.validatePassword}" onchange="this.value = this.value.trim()" required="true" requiredMessage="Please confirm the password!"/>
+                                        <p:outputLabel for="@previous" value="Confirm Password" indicateRequired="false" style="text-align: center;"/>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                
+                            <div class="row mx-3 my-4">  
+                                <h:commandButton value="Next" disableOnAjax="false" action="#{registration.userRegistration()}" class="rounded-pill py-2 px-2" style="font-size: 20px; font-family: Roboto; font-weight: bold; background-color: #039BE5;" update="growl"/>
+                            </div>
+
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <style>
+            b, p {
+                font-family: 'Roboto', sans-serif;
+            }
+        </style>
+    </h:body>
+</html>

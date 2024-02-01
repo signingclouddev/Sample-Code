@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+        
+    <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    
+    <body>
+
+      <ui:composition>
+        <nav class="navbar navbar-light" style="background-color: #00B0FF;">
+          <div id="icon" class="px-3 text-center">
+            <a class="home" href="http://localhost:8080/simpleweb/faces/result.xhtml" style="color: #000000; text-decoration: none;">
+              <img src="resources/images/simplelogo.png" alt="icon" style="width:28px; height:28px; margin-top: -5px;"/>
+              <span style="font-family: 'Montserrat', sans-serif; font-size: 19px; font-weight: bold;">SimpleWeb</span>
+            </a>    
+          </div>
+
+            <ul class="nav justify-content-end">
+              <li class="nav-item">
+                <h:form>
+                  <h:link style="font-family: 'Roboto', sans-serif; font-size: 18px;" outcome="/result.xhtml?faces-redirect=true" styleClass="nav-link">
+                    <img src="resources/images/home.png" alt="home" style="width: 22px; height: 22px;"/>
+             
+                  </h:link>
+                </h:form>
+              </li>
+              <li class="nav-item">
+                <h:form>
+                  <h:link style="font-family: 'Roboto', sans-serif; font-size: 18px;" outcome="/transaction.xhtml?faces-redirect=true" styleClass="nav-link">
+                    <img src="resources/images/sync.png" alt="home" style="width: 22px; height: 22px;"/>
+              
+                  </h:link>
+                </h:form>
+              </li>
+
+              <p:menubar style="background-color: #00B0FF; border: 0; margin-top: -8px">
+                <p:submenu icon="pi pi-users">
+                  <p:menuitem value="View Profile" icon="pi pi-user" outcome="/information.xhtml?faces-redirect=true" style="font-family: 'Roboto', sans-serif;"/>
+                  <p:menuitem value="Logout" icon="pi pi-sign-out" action="#{result.logout()}" style="font-family: 'Roboto', sans-serif; font-weight: bold;"/>
+                </p:submenu>
+              </p:menubar>
+              
+            </ul>
+            
+        </nav>
+        <style> 
+            .nav a {
+              float: left;
+              display: block;
+              color: #000000;
+              text-align: center;
+              padding: 10px 12px;
+              text-decoration: none;
+              font-size: 15px;
+              border-bottom: 3px solid transparent;
+            }
+
+            .nav a:hover {
+              border-bottom: 3px solid #01579B;
+            }
+
+            .nav a.active {
+              border-bottom: 3px solid #01579B;
+            }
+
+            .ui-menuitem-text {
+              font-family: 'Roboto', sans-serif;
+              
+              color:#013763 !important;
+            }
+
+            .ui-menuitem-link:hover {
+              background-color: #42A5F5 !important;
+            }
+
+            .ui-icon {
+              color:#000000 !important;
+              font-weight: bold;
+              font-size: 20px !important;
+            }
+
+            .navbar .nav > li {
+              margin-left: 2px;
+            }
+
+        </style>
+      </ui:composition>
+
+      
+    </body>
+</html>
